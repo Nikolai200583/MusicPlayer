@@ -25,11 +25,15 @@ ul li {
     list-style: none;
 }
 
-//-------------------------------//
-
-// ========== fonts ========
-
-//--------------------------
+@font-face {
+    font-family: 'StratosSkyeng';
+    src: local('StratosSkyeng'), local('StratosSkyeng'),
+        url('../public/fonts/Stratos-Regular.woff2') format('woff2'),
+        url('../public/fonts/Stratos-Regular.woff') format('woff'),
+        url('../public/fonts/Stratos-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
 
 html,
 body {
