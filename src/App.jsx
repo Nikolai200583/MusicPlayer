@@ -1,5 +1,6 @@
 import './style.css';
 import PlayListItem from './components/PlayListItem';
+import Logo from './components/Logo';
 import NavBurger from './components/NavBurger';
 import NavMenu from './components/NavMenu';
 import SideBar from './components/SideBar';
@@ -10,13 +11,7 @@ function App() {
             <div className="container">
                 <main className="main">
                     <nav className="main__nav nav">
-                        <div className="nav__logo logo">
-                            <img
-                                className="logo__image"
-                                src="img/logo.png"
-                                alt="logo"
-                            />
-                        </div>
+                        <Logo/>
                         <NavBurger />
                         <NavMenu
                             first={'Главное'}
