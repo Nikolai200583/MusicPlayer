@@ -120,13 +120,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
 }
 .nav__menu {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 120px;
-  left: 0;
+  display: block;
+  visibility: visible;
+  transition: all 3s;
 }
 
 .logo__image {
@@ -140,14 +139,18 @@ body {
   width: 100%;
   height: 1px;
   background-color: #d3d3d3;
-  cursor: pointer;
 }
 
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(-100%);
+}
 .menu__list {
   padding: 18px 0 10px 0;
-  width: 30%;
+  width: 100%;
   height: 100%;
-  background-color: transparent;
 }
 .menu__item {
   padding: 5px 0;
@@ -158,6 +161,11 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+}
+
+.active {
+  transform: translateX(0);
+  transition: all 0.5s;
 }
 
 .centerblock__search {
@@ -252,7 +260,7 @@ body {
 .content__playlist {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  height: 600px;
 }
 
 .playlist-title__col {

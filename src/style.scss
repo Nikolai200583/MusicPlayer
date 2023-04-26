@@ -131,16 +131,13 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        cursor: pointer;
     }
 
     &__menu {
-        // display: block;
-        // visibility: visible;
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        top: 120px;
-        left: 0;
+        display: block;
+        visibility: visible;
+        transition: all 3s;
     }
 }
 
@@ -158,16 +155,18 @@ body {
         width: 100%;
         height: 1px;
         background-color: #d3d3d3;
-        cursor: pointer;
     }
 }
 
 .menu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    transform: translateX(-100%);
     &__list {
         padding: 18px 0 10px 0;
-        width: 30%;
+        width: 100%;
         height: 100%;
-        background-color: transparent;
     }
 
     &__item {
@@ -182,7 +181,10 @@ body {
         line-height: 24px;
     }
 }
-
+.active {
+    transform: translateX(0);
+    transition: all 0.5s;
+}
 .centerblock {
     &__search {
         width: 100%;
@@ -282,7 +284,8 @@ body {
     &__playlist {
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
+        height: 600px;
+        
     }
 }
 
