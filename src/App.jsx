@@ -7,6 +7,7 @@ import SideBar from './components/SideBar';
 import BarContent from './components/BarContent';
 import { useState, useEffect } from 'react';
 import { SkeletonTheme } from 'react-loading-skeleton';
+import CenterblockFilter from './components/CenterblockFilter';
 
 function App() {
     const [menuActive, setMenuActive] = useState(false);
@@ -60,18 +61,8 @@ function App() {
                                 />
                             </div>
                             <h2 className="centerblock__h2">Треки</h2>
-                            <div className="centerblock__filter filter">
-                                <div className="filter__title">Искать по:</div>
-                                <div className="filter__button button-author _btn-text">
-                                    исполнителю
-                                </div>
-                                <div className="filter__button button-year _btn-text">
-                                    году выпуска
-                                </div>
-                                <div className="filter__button button-genre _btn-text">
-                                    жанру
-                                </div>
-                            </div>
+                            <CenterblockFilter
+                            traks={tracks}/>
                             <div className="centerblock__content">
                                 <div className="content__title playlist-title">
                                     <div className="playlist-title__col col01">

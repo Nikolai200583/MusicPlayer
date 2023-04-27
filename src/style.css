@@ -230,6 +230,18 @@ body {
   line-height: 24px;
 }
 
+.filter__buttonBox {
+  display: flex;
+  gap: 10px;
+}
+.filter__dropdown {
+  width: 130px;
+  position: absolute;
+  background-color: #313131;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
 .filter__title {
   font-style: normal;
   font-weight: 400;
@@ -238,16 +250,40 @@ body {
   margin-right: 15px;
 }
 .filter__button {
+  align-items: center;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid #ffffff;
+  border: 1px solid #FFFFFF;
   border-radius: 60px;
   padding: 6px 20px;
+  background-color: #181818;
+  color: #FFFFFF;
 }
-.filter__button:not(:last-child) {
-  margin-right: 10px;
+
+.active__button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 60px;
+  padding: 6px 20px;
+  background-color: #181818;
+  border-color: #AD61FF;
+  color: #AD61FF;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  color: #AD61FF;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .content__title {
