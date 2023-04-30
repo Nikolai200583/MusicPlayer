@@ -1,23 +1,21 @@
-const NavMenu = ({ first, second, third }) => {
+const NavMenu = ({ active, setActive }) => {
+    const items = [
+        { value: "Главная", href: "http://" },
+        { value: "Мой плейлист", href: "http://" },
+        { value: "Войти", href: "http://"},
+      ];
     return (
-        <div className="nav__menu menu">
+        <div className={ active ? "active" : "nav__menu menu" }
+        onClick={() => setActive(false)}>
+
             <ul className="menu__list">
-                <li className="menu__item">
-                    <a href="http://" className="menu__link">
-                        {first}
-                    </a>
+                {items.map((item, i) => (
+                    <li className="menu__item"  key={i}>
+                    <a href={item.href}className="menu__link">{item.value}</a>              
                 </li>
-                <li className="menu__item">
-                    <a href="http://" className="menu__link">
-                        {second}
-                    </a>
-                </li>
-                <li className="menu__item">
-                    <a href="http://" className="menu__link">
-                        {third}
-                    </a>
-                </li>
-            </ul>
+                ))}
+            </ul>                 
+                        
         </div>
     );
 };
