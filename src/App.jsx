@@ -1,29 +1,89 @@
 import './style.css';
-import PlayListItem from './components/PlayListItem';
-import Logo from './components/Logo';
-import NavBurger from './components/NavBurger';
-import NavMenu from './components/NavMenu';
-import SideBar from './components/SideBar';
-import BarContent from './components/BarContent';
+import PlayListItem from './components/PlayListItems/PlayListItem';
+import { Logo } from './components/Logo/Logo';
+import { NavBurger } from './components/NavBurger/NavBurger';
+import NavMenu from './components/NavMenu/NavMenu';
+import { SideBar } from './components/SideBar/SideBar';
+import { BarContent } from './components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
 import { SkeletonTheme } from 'react-loading-skeleton';
-import CenterblockFilter from './components/CenterblockFilter';
+import CenterblockFilter from './components/CenterblockFilter/CenterblockFilter';
 
 function App() {
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);
     const tracks = [
-        {titleTrack: 'Guilt', titleSpan: '', author: 'Nero', album: 'Welcome Reality', time: '4:44'},
-        {titleTrack: 'Elektro', titleSpan: '', author: 'Dynoro, Outwork, Mr. Gee', album: 'Elektro', time: '2:22'},
-        {titleTrack: 'I’m Fire', titleSpan: '', author: 'Ali Bakgor', album: 'I’m Fire', time: '2:22'},
-        {titleTrack: 'Non Stop', titleSpan: '(Remix)', author: 'Стоункат, Psychopath', album: 'Non Stop', time: '4:12'},
-        {titleTrack: 'Run Run', titleSpan: '', author: 'Jaded, Will Clarke, AR/CO', album: 'Run Run', time: '2:54'},
-        {titleTrack: 'Eyes on Fire', titleSpan: '(Zeds Dead Remix)', author: 'Blue Foundation, Zeds Dead', album: 'Eyes on Fire', time: '5:20'},
-        {titleTrack: 'Mucho Bien', titleSpan: '(Hi Profile Remix)', author: 'HYBIT, Mr. Black, Offer Nissim, Hi Profile', album: 'Mucho Bien', time: '3:41'},
-        {titleTrack: 'Knives n Cherries', titleSpan: '', author: 'minthaze', album: 'Captivating', time: '1:48'},
-        {titleTrack: 'How Deep Is Your Love', titleSpan: '', author: 'Calvin Harris, Disciples', album: 'How Deep Is Your Love', time: '3:32'},
-        {titleTrack: 'Morena', titleSpan: '', author: 'Tom Boxer', album: 'Soundz Made in Romania', time: '3:36'},
-    ]
+        {
+            titleTrack: 'Guilt',
+            titleSpan: '',
+            author: 'Nero',
+            album: 'Welcome Reality',
+            time: '4:44',
+        },
+        {
+            titleTrack: 'Elektro',
+            titleSpan: '',
+            author: 'Dynoro, Outwork, Mr. Gee',
+            album: 'Elektro',
+            time: '2:22',
+        },
+        {
+            titleTrack: 'I’m Fire',
+            titleSpan: '',
+            author: 'Ali Bakgor',
+            album: 'I’m Fire',
+            time: '2:22',
+        },
+        {
+            titleTrack: 'Non Stop',
+            titleSpan: '(Remix)',
+            author: 'Стоункат, Psychopath',
+            album: 'Non Stop',
+            time: '4:12',
+        },
+        {
+            titleTrack: 'Run Run',
+            titleSpan: '',
+            author: 'Jaded, Will Clarke, AR/CO',
+            album: 'Run Run',
+            time: '2:54',
+        },
+        {
+            titleTrack: 'Eyes on Fire',
+            titleSpan: '(Zeds Dead Remix)',
+            author: 'Blue Foundation, Zeds Dead',
+            album: 'Eyes on Fire',
+            time: '5:20',
+        },
+        {
+            titleTrack: 'Mucho Bien',
+            titleSpan: '(Hi Profile Remix)',
+            author: 'HYBIT, Mr. Black, Offer Nissim, Hi Profile',
+            album: 'Mucho Bien',
+            time: '3:41',
+        },
+        {
+            titleTrack: 'Knives n Cherries',
+            titleSpan: '',
+            author: 'minthaze',
+            album: 'Captivating',
+            time: '1:48',
+        },
+        {
+            titleTrack: 'How Deep Is Your Love',
+            titleSpan: '',
+            author: 'Calvin Harris, Disciples',
+            album: 'How Deep Is Your Love',
+            time: '3:32',
+        },
+        {
+            titleTrack: 'Morena',
+            titleSpan: '',
+            author: 'Tom Boxer',
+            album: 'Soundz Made in Romania',
+            time: '3:36',
+        },
+    ];
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -45,7 +105,7 @@ function App() {
                             />
                             <NavMenu
                                 active={menuActive}
-                                setActive={setMenuActive}                               
+                                setActive={setMenuActive}
                             />
                         </nav>
                         <div className="main__centerblock centerblock">
@@ -61,8 +121,7 @@ function App() {
                                 />
                             </div>
                             <h2 className="centerblock__h2">Треки</h2>
-                            <CenterblockFilter
-                            traks={tracks}/>
+                            <CenterblockFilter traks={tracks} />
                             <div className="centerblock__content">
                                 <div className="content__title playlist-title">
                                     <div className="playlist-title__col col01">
@@ -85,15 +144,16 @@ function App() {
                                 </div>
                                 <div className="content__playlist playlist">
                                     {tracks.map((track, i) => (
-                                        <PlayListItem key={i}
-                                        loading={isLoading}
-                                        titleTrack={track.titleTrack}
-                                        titleSpan={track.titleSpan}
-                                        author={track.author}
-                                        album={track.album}
-                                        time={track.time}
+                                        <PlayListItem
+                                            key={i}
+                                            loading={isLoading}
+                                            titleTrack={track.titleTrack}
+                                            titleSpan={track.titleSpan}
+                                            author={track.author}
+                                            album={track.album}
+                                            time={track.time}
                                         />
-                                        ))}                                    
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -112,7 +172,7 @@ function App() {
                                     />
                                     <SideBar
                                         loading={isLoading}
-                                        image="img/playlist02.png"                                     
+                                        image="img/playlist02.png"
                                     />
                                     <SideBar
                                         loading={isLoading}

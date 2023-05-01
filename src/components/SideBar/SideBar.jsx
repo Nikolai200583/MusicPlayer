@@ -1,23 +1,23 @@
+import * as Styled from './Styles';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 
-const SideBar = (props) => {
+export const SideBar = (props) => {
       
     return (
-        <div className="sidebar__item">
+        <Styled.sidebarItem>
             {props.loading ? (
                             <Skeleton height={150} />
                         ) : (
-            <a className="sidebar__link" href="#">
-                <img
-                    className="sidebar__img"
+            <Styled.sidebarLink href="#">
+                <Styled.sidebarImg
                     src={props.image}
                     alt="day's playlist"
                 />
-            </a>
+            </Styled.sidebarLink>
                         )}
-        </div>
+        </Styled.sidebarItem>
     );
 };
-export default SideBar;
+
