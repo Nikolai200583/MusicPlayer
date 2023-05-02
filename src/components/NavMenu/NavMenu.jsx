@@ -1,3 +1,5 @@
+import * as Styled from './Styles';
+
 const NavMenu = ({ active, setActive }) => {
     const items = [
         { value: "Главная", href: "http://" },
@@ -5,18 +7,18 @@ const NavMenu = ({ active, setActive }) => {
         { value: "Войти", href: "http://"},
       ];
     return (
-        <div className={ active ? "active" : "nav__menu menu" }
+        <Styled.navMenuActiv className = { active ? "active" : "navMenu" }
         onClick={() => setActive(false)}>
 
-            <ul className="menu__list">
+            <Styled.menuList>
                 {items.map((item, i) => (
-                    <li className="menu__item"  key={i}>
-                    <a href={item.href}className="menu__link">{item.value}</a>              
-                </li>
+                    <Styled.menuItem   key={i}>
+                    <Styled.menuLink href={item.href}>{item.value}</Styled.menuLink>              
+                </Styled.menuItem>
                 ))}
-            </ul>                 
+            </Styled.menuList>                 
                         
-        </div>
+        </Styled.navMenuActiv>
     );
 };
 
