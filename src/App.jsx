@@ -1,4 +1,5 @@
 import './style.css';
+import * as Styled from './components/App/Styles';
 import PlayListItem from './components/PlayListItems/PlayListItem';
 import { Logo } from './components/Logo/Logo';
 import { NavBurger } from './components/NavBurger/NavBurger';
@@ -9,7 +10,7 @@ import { useState, useEffect } from 'react';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import CenterblockFilter from './components/CenterblockFilter/CenterblockFilter';
 
-function App() {
+export function App() {
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);
     const tracks = [
@@ -94,10 +95,12 @@ function App() {
 
     return (
         <SkeletonTheme baseColor="#202020" highlightColor="#444">
-            <div className="wrapper">
-                <div className="container">
-                    <main className="main">
-                        <nav className="main__nav nav">
+            <Styled.wrapper>
+                <Styled.container>
+                    <Styled.main>
+                        <Styled.mainNav>
+                            {' '}
+                            {/* nav */}
                             <Logo />
                             <NavBurger
                                 active={menuActive}
@@ -107,42 +110,34 @@ function App() {
                                 active={menuActive}
                                 setActive={setMenuActive}
                             />
-                        </nav>
-                        <div className="main__centerblock centerblock">
-                            <div className="centerblock__search search">
-                                <svg className="search__svg">
+                        </Styled.mainNav>
+                        <Styled.mainCenterblock>
+                            {/* Centerblock */}
+                            <Styled.centerblockSearch>
+                                {/* search */}
+                                <Styled.searchSvg>
                                     <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
-                                </svg>
-                                <input
-                                    className="search__text"
+                                </Styled.searchSvg>
+                                <Styled.searchText
                                     type="search"
                                     placeholder="Поиск"
                                     name="search"
                                 />
-                            </div>
-                            <h2 className="centerblock__h2">Треки</h2>
+                            </Styled.centerblockSearch>
+                            <Styled.centerblockH2>Треки</Styled.centerblockH2>
                             <CenterblockFilter traks={tracks} />
-                            <div className="centerblock__content">
-                                <div className="content__title playlist-title">
-                                    <div className="playlist-title__col col01">
-                                        Трек
-                                    </div>
-                                    <div className="playlist-title__col col02">
-                                        ИСПОЛНИТЕЛЬ
-                                    </div>
-                                    <div className="playlist-title__col col03">
-                                        АЛЬБОМ
-                                    </div>
-                                    <div className="playlist-title__col col04">
-                                        <svg
-                                            className="playlist-title__svg"
-                                            alt="time"
-                                        >
+                            <Styled.centerblockContent>
+                                <Styled.contentTitle>
+                                    <Styled.col01>Трек</Styled.col01>
+                                    <Styled.col02>ИСПОЛНИТЕЛЬ</Styled.col02>
+                                    <Styled.col03>АЛЬБОМ</Styled.col03>
+                                    <Styled.col04>
+                                        <Styled.playlistTitleSvg alt="time">
                                             <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="content__playlist playlist">
+                                        </Styled.playlistTitleSvg>
+                                    </Styled.col04>
+                                </Styled.contentTitle>
+                                <Styled.contentPlaylist>
                                     {tracks.map((track, i) => (
                                         <PlayListItem
                                             key={i}
@@ -154,18 +149,18 @@ function App() {
                                             time={track.time}
                                         />
                                     ))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="main__sidebar sidebar">
-                            <div className="sidebar__personal">
-                                <p className="sidebar__personal-name">
+                                </Styled.contentPlaylist>
+                            </Styled.centerblockContent>
+                        </Styled.mainCenterblock>
+                        <Styled.mainSidebar>
+                            <Styled.sidebarPersonal>
+                                <Styled.sidebarPersonalName>
                                     Sergey.Ivanov
-                                </p>
-                                <div className="sidebar__avatar"></div>
-                            </div>
-                            <div className="sidebar__block">
-                                <div className="sidebar__list">
+                                </Styled.sidebarPersonalName>
+                                <Styled.sidebarAvatar></Styled.sidebarAvatar>
+                            </Styled.sidebarPersonal>
+                            <Styled.sidebarBlock>
+                                <Styled.sidebarList>
                                     <SideBar
                                         loading={isLoading}
                                         image="img/playlist01.png"
@@ -178,18 +173,16 @@ function App() {
                                         loading={isLoading}
                                         image="img/playlist03.png"
                                     />
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                    <div className="bar">
+                                </Styled.sidebarList>
+                            </Styled.sidebarBlock>
+                        </Styled.mainSidebar>
+                    </Styled.main>
+                    <Styled.bar>
                         <BarContent loading={isLoading} />
-                    </div>
-                    <footer className="footer"></footer>
-                </div>
-            </div>
+                    </Styled.bar>
+                    <Styled.footer></Styled.footer>
+                </Styled.container>
+            </Styled.wrapper>
         </SkeletonTheme>
     );
 }
-
-export default App;

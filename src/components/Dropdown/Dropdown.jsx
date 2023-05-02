@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
+import * as Styled from './Styles';
+
   
-  const Dropdown = ({ data }) => {
+  export const Dropdown = ({ data }) => {
     return (
-      <div className="filter__dropdown">
+      <Styled.filterDropdown>
         {data.map((item) => (
-          <div key={item} className="dropdown-item">
+          <Styled.dropdownItem key={item}>
             {item}
-          </div>
+          </Styled.dropdownItem>
         ))}
-      </div>
+      </Styled.filterDropdown>
     );
   };
 
-  export default Dropdown
+  

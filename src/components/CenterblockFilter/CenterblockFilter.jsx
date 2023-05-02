@@ -1,6 +1,7 @@
+import * as Styled from './Styles';
 import React, { useState } from 'react';
 import CategoryButton from '../CategoryButton/CategoryButton';
-import Dropdown from '../Dropdown/Dropdown';
+import {Dropdown} from '../Dropdown/Dropdown';
 
 const CenterblockFilter = ({ tracks }) => {
     const [activeCategory, setActiveCategory] = useState(null);
@@ -20,11 +21,11 @@ const CenterblockFilter = ({ tracks }) => {
         }
     };
     return (
-        <div className="centerblock__filter filter">
-            <div className="filter__title">Искать по:</div>
-            <div className="filter__buttonBox">
+        <Styled.centerblockFilter>
+            <Styled.filterTitle>Искать по:</Styled.filterTitle>
+            <Styled.filterButtonBox>
                 {categories.map((category) => (
-                    <div key={category.name} className="">
+                    <div key={category.name}>
                         <CategoryButton
                             category={category.name}
                             isActive={activeCategory === category.name}
@@ -35,8 +36,8 @@ const CenterblockFilter = ({ tracks }) => {
                         )}
                     </div>
                 ))}
-            </div>
-        </div>
+            </Styled.filterButtonBox>
+        </Styled.centerblockFilter>
     );
 };
 

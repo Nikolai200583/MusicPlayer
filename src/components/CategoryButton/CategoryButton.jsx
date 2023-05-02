@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const CategoryButton = ({ category, isActive, onClick }) => {
     return (
-      <button
-        className={`filter__button ${isActive ? "active__button" : ""}`}
-        onClick={onClick}
-      >
-        {category}
-      </button>
+        <button
+            className={`filter__button ${isActive ? 'active__button' : ''}`}
+            onClick={onClick}
+        >
+            {category}
+        </button>
     );
-  };
-  export default CategoryButton
+};
+export default CategoryButton;

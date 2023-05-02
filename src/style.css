@@ -39,21 +39,6 @@ body {
   color: #ffffff;
 }
 
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  background-color: #383838;
-}
-
-.container {
-  max-width: 1920px;
-  height: 100vh;
-  margin: 0 auto;
-  position: relative;
-  background-color: #181818;
-}
-
 ._btn-text:hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
@@ -83,27 +68,6 @@ body {
   fill: #696969;
   stroke: #ffffff;
   cursor: pointer;
-}
-
-.main {
-  flex: 1 1 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.main__nav {
-  width: 244px;
-  background-color: #181818;
-  padding: 20px 0 20px 36px;
-}
-.main__centerblock {
-  width: auto;
-  flex-grow: 3;
-  padding: 20px 40px 20px 111px;
-}
-.main__sidebar {
-  max-width: 418px;
-  padding: 20px 90px 20px 78px;
 }
 
 .nav__menu {
@@ -139,51 +103,6 @@ body {
   transition: all 0.5s;
 }
 
-.centerblock__search {
-  width: 100%;
-  border-bottom: 1px solid #4e4e4e;
-  margin-bottom: 51px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.centerblock__h2 {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 72px;
-  letter-spacing: -0.8px;
-  margin-bottom: 45px;
-}
-.centerblock__filter {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 51px;
-}
-.centerblock__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.search__svg {
-  width: 17px;
-  height: 17px;
-  margin-right: 5px;
-  stroke: #ffffff;
-  fill: transparent;
-}
-.search__text {
-  flex-grow: 100;
-  background-color: transparent;
-  border: none;
-  padding: 13px 10px 14px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #ffffff;
-}
 .search__text::-moz-placeholder {
   background-color: transparent;
   color: #ffffff;
@@ -192,6 +111,7 @@ body {
   font-size: 16px;
   line-height: 24px;
 }
+
 .search__text::placeholder {
   background-color: transparent;
   color: #ffffff;
@@ -201,10 +121,6 @@ body {
   line-height: 24px;
 }
 
-.filter__buttonBox {
-  display: flex;
-  gap: 10px;
-}
 .filter__dropdown {
   width: 130px;
   position: absolute;
@@ -212,13 +128,6 @@ body {
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
-}
-.filter__title {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  margin-right: 15px;
 }
 .filter__button {
   align-items: center;
@@ -246,61 +155,10 @@ body {
   cursor: pointer;
 }
 
-.dropdown-item {
-  padding: 10px;
-  cursor: pointer;
-}
-
 .dropdown-item:hover {
   color: #ad61ff;
   cursor: pointer;
   text-decoration: underline;
-}
-
-.content__title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-.content__playlist {
-  display: flex;
-  flex-direction: column;
-  height: 600px;
-}
-
-.playlist-title__col {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 2px;
-  color: #696969;
-  text-transform: uppercase;
-}
-.playlist-title__svg {
-  width: 12px;
-  height: 12px;
-  fill: transparent;
-  stroke: #696969;
-}
-
-.col01 {
-  width: 447px;
-}
-
-.col02 {
-  width: 321px;
-}
-
-.col03 {
-  width: 245px;
-}
-
-.col04 {
-  width: 60px;
-  text-align: end;
 }
 
 .playlist__item {
@@ -388,46 +246,4 @@ body {
   line-height: 24px;
   text-align: right;
   color: #696969;
-}
-
-.sidebar__personal {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 12px 0 15px 0;
-}
-.sidebar__personal-name {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #ffffff;
-  margin-right: 16px;
-}
-.sidebar__avatar {
-  width: 43px;
-  height: 43px;
-  background-color: #313131;
-  border-radius: 50%;
-}
-.sidebar__block {
-  height: 100%;
-  padding: 240px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.sidebar__list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(28, 28, 28, 0.5);
 }/*# sourceMappingURL=style.css.map */
