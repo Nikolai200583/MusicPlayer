@@ -15,8 +15,6 @@ export const BarContent = ({ loading }) => {
                             </Styled.playerBtnPrevSvg>
                         </Styled.playerBtnPrev>
                         <Styled.playerBtnPlay>
-                            {' '}
-                            {/*_btn */}
                             <Styled.playerBtnPlaySvg alt="play">
                                 <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
                             </Styled.playerBtnPlaySvg>
@@ -27,15 +25,11 @@ export const BarContent = ({ loading }) => {
                             </Styled.playerBtnNextSvg>
                         </Styled.playerBtnNext>
                         <Styled.playerBtnRepeat>
-                            {' '}
-                            {/*_btn-icon */}
                             <Styled.playerBtnRepeatSvg alt="repeat">
                                 <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                             </Styled.playerBtnRepeatSvg>
                         </Styled.playerBtnRepeat>
                         <Styled.playerBtnShuffle>
-                            {' '}
-                            {/*_btn-icon */}
                             <Styled.playerBtnShuffleSvg alt="shuffle">
                                 <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                             </Styled.playerBtnShuffleSvg>
@@ -43,7 +37,6 @@ export const BarContent = ({ loading }) => {
                     </Styled.playerControls>
 
                     <Styled.playerTrackPlay>
-                        {/*track-play */}
                         <Styled.trackPlayContain>
                             <Styled.trackPlayImage>
                                 {loading ? (
@@ -77,13 +70,11 @@ export const BarContent = ({ loading }) => {
 
                         <Styled.trackPlayLikeDis>
                             <Styled.trackPlayLike>
-                                {/*_btn-icon */}
                                 <Styled.trackPlayLikeSvg alt="like">
                                     <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                                 </Styled.trackPlayLikeSvg>
                             </Styled.trackPlayLike>
                             <Styled.trackPlayDislike>
-                                {/*_btn-icon */}
                                 <Styled.trackPlayDislikeSvg alt="dislike">
                                     <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
                                 </Styled.trackPlayDislikeSvg>

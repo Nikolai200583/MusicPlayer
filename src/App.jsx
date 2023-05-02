@@ -1,15 +1,15 @@
-import './style.css';
+
 import * as Styled from './components/App/Styles';
-import PlayListItem from './components/PlayListItems/PlayListItem';
+import { PlayListItem } from './components/PlayListItems/PlayListItem';
 import { Logo } from './components/Logo/Logo';
 import { NavBurger } from './components/NavBurger/NavBurger';
-import NavMenu from './components/NavMenu/NavMenu';
+import { NavMenu } from './components/NavMenu/NavMenu';
 import { SideBar } from './components/SideBar/SideBar';
 import { BarContent } from './components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
 import { SkeletonTheme } from 'react-loading-skeleton';
-import CenterblockFilter from './components/CenterblockFilter/CenterblockFilter';
-
+import { CenterblockFilter } from './components/CenterblockFilter/CenterblockFilter';
+import { GlobalStyle } from './components/App/GlobalStyle';
 export function App() {
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);
@@ -95,12 +95,11 @@ export function App() {
 
     return (
         <SkeletonTheme baseColor="#202020" highlightColor="#444">
+            <GlobalStyle />
             <Styled.wrapper>
                 <Styled.container>
                     <Styled.main>
-                        <Styled.mainNav>
-                            {' '}
-                            {/* nav */}
+                        <Styled.mainNav>                           
                             <Logo />
                             <NavBurger
                                 active={menuActive}
@@ -111,10 +110,8 @@ export function App() {
                                 setActive={setMenuActive}
                             />
                         </Styled.mainNav>
-                        <Styled.mainCenterblock>
-                            {/* Centerblock */}
-                            <Styled.centerblockSearch>
-                                {/* search */}
+                        <Styled.mainCenterblock>                            
+                            <Styled.centerblockSearch>                                
                                 <Styled.searchSvg>
                                     <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
                                 </Styled.searchSvg>

@@ -43,6 +43,7 @@ export const playerBtnPrevSvg = styled.svg`
 export const playerBtnPlay = styled.div`
     ${btnMixin}
     margin-right: 23px;
+    cursor: pointer;
 `;
 export const playerBtnPlaySvg = styled.svg`
     width: 22px;
@@ -63,6 +64,17 @@ export const playerBtnNextSvg = styled.svg`
 export const playerBtnRepeat = styled.div`
     ${btnMixin}
     margin-right: 24px;
+
+    :hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        cursor: pointer;
+    }
+    :active svg {
+        fill: transparent;
+        stroke: #ffffff;
+        cursor: pointer;
+    }
 `;
 export const playerBtnRepeatSvg = styled.svg`
     width: 18px;
@@ -80,6 +92,16 @@ export const playerBtnShuffleSvg = styled.svg`
     height: 12px;
     fill: transparent;
     stroke: #696969;
+    :hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        cursor: pointer;
+    }
+    :active svg {
+        fill: transparent;
+        stroke: #ffffff;
+        cursor: pointer;
+    }
 `;
 export const playerTrackPlay = styled.div`
     display: flex;
@@ -139,6 +161,16 @@ export const trackPlayLikeDis = styled.div`
 `;
 export const trackPlayLike = styled.div`
     padding: 5px;
+    :hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        cursor: pointer;
+    }
+    :active svg {
+        fill: transparent;
+        stroke: #ffffff;
+        cursor: pointer;
+    }
 `;
 export const trackPlayLikeSvg = styled.svg`
     width: 14px;
@@ -183,4 +215,5 @@ export const barVolumeProgress = styled.div`
 `;
 export const barVolumeProgressLine = styled.input`
     width: 109px;
+    cursor: pointer;
 `;

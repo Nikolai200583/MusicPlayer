@@ -11,10 +11,10 @@ export const filterButton = styled.button`
     padding: 6px 20px;
     background-color: #181818;
     color: #ffffff;
-`;
 
-export const ActiveButton = styled(filterButton)`    
-    border-color: #ad61ff;
-    color: #ad61ff;
-    cursor: pointer;
+    &.activeButton {
+        border-color: #ad61ff;
+        color: #ad61ff;
+        cursor: pointer;
+    }
 `;

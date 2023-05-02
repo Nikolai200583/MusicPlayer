@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import * as Styled from './Styles';
 
-const CategoryButton = ({ category, isActive, onClick }) => {
+export const CategoryButton = ({ category, isActive, onClick }) => {
     return (
-        <button
-            className={`filter__button ${isActive ? 'active__button' : ''}`}
+        <Styled.filterButton
+            className={isActive ? 'activeButton' : ' '}
             onClick={onClick}
         >
             {category}
-        </button>
+        </Styled.filterButton>
     );
 };
-export default CategoryButton;

@@ -9,5 +9,3 @@ export const NavBurger = ({ active, setActive }) => {
         </Styled.navBurger>
     );
 };
-
-

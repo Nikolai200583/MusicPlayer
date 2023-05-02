@@ -63,6 +63,14 @@ export const searchText = styled.input`
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
+    ::placeholder {
+        background-color: transparent;
+        color: #ffffff;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
 `;
 export const centerblockH2 = styled.h2`
     font-style: normal;
@@ -75,6 +83,7 @@ export const centerblockH2 = styled.h2`
 export const centerblockContent = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 `;
 export const contentTitle = styled.div`
     display: flex;
@@ -131,17 +140,17 @@ export const sidebarPersonalName = styled.p`
     margin-right: 16px;
 `;
 export const sidebarBlock = styled.div`
-    width: 43px;
-    height: 43px;
-    background-color: #313131;
-    border-radius: 50%;
-`;
-export const sidebarAvatar = styled.div`
     height: 100%;
     padding: 240px 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+`;
+export const sidebarAvatar = styled.div`
+    width: 43px;
+    height: 43px;
+    background-color: #313131;
+    border-radius: 50%;
 `;
 export const sidebarList = styled.div`
     display: flex;

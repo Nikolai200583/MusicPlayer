@@ -1,9 +1,9 @@
 import * as Styled from './Styles';
 import React, { useState } from 'react';
-import CategoryButton from '../CategoryButton/CategoryButton';
-import {Dropdown} from '../Dropdown/Dropdown';
+import { CategoryButton } from '../CategoryButton/CategoryButton';
+import { Dropdown } from '../Dropdown/Dropdown';
 
-const CenterblockFilter = ({ tracks }) => {
+export const CenterblockFilter = ({ tracks }) => {
     const [activeCategory, setActiveCategory] = useState(null);
     const categories = [
         {
@@ -40,5 +40,3 @@ const CenterblockFilter = ({ tracks }) => {
         </Styled.centerblockFilter>
     );
 };
-
-export default CenterblockFilter;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const navMenuActiv = styled.div`
-    .navMenu {
+    &.navMenu {
         display: block;
         visibility: visible;
         position: fixed;
@@ -11,7 +11,7 @@ export const navMenuActiv = styled.div`
         transition: all 3s;
     }
 
-    .activ {
+    &.active {
         transform: translateX(0);
         transition: all 0.5s;
     }

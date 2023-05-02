@@ -1,66 +1,70 @@
-
+import * as Styled from './Styles';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const PlayListItem = ({ titleTrack, titleSpan, author, album, time, loading }) => {    
-    
+export const PlayListItem = ({
+    titleTrack,
+    titleSpan,
+    author,
+    album,
+    time,
+    loading,
+}) => {
     return (
-        <div className="playlist__item">
-            <div className="playlist__track track">
-                <div className="track__title">
-                    <div className="track__title-image">
+        <Styled.playlistItem>
+            <Styled.playlistTrack>
+                <Styled.trackTitle>
+                    <Styled.trackTitleImage>
                         {loading ? (
                             <Skeleton width={51} height={51} />
                         ) : (
-                            <svg className="track__title-svg" alt="music">
+                            <Styled.trackTitleSvg alt="music">
                                 <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                            </svg>
+                            </Styled.trackTitleSvg>
                         )}
-                    </div>
+                    </Styled.trackTitleImage>
 
-                    <div className="track__title-text">
+                    <Styled.trackTitleText>
                         {loading ? (
                             <Skeleton width={330} />
                         ) : (
-                            <a className="track__title-link" href="http://">
+                            <Styled.trackTitleLink href="http://">
                                 {titleTrack}
-                                <span className="track__title-span">
+                                <Styled.trackTitleSpan>
                                     {titleSpan}
-                                </span>
-                            </a>
+                                </Styled.trackTitleSpan>
+                            </Styled.trackTitleLink>
                         )}
-                    </div>
-                </div>
+                    </Styled.trackTitleText>
+                </Styled.trackTitle>
 
-                <div className="track__author">
+                <Styled.trackAuthor>
                     {loading ? (
                         <Skeleton width={270} />
                     ) : (
-                        <a className="track__author-link" href="http://">
+                        <Styled.trackAuthorLink href="http://">
                             {author}
-                        </a>
+                        </Styled.trackAuthorLink>
                     )}
-                </div>
+                </Styled.trackAuthor>
 
-                <div className="track__album">
+                <Styled.trackAlbum>
                     {loading ? (
                         <Skeleton width={317} />
                     ) : (
-                        <a className="track__album-link" href="http://">
+                        <Styled.trackAlbumLink href="http://">
                             {album}
-                        </a>
+                        </Styled.trackAlbumLink>
                     )}
-                </div>
+                </Styled.trackAlbum>
 
-                <div className="track__time">
-                    <svg className="track__time-svg" alt="time">
+                <Styled.trackTime>
+                    <Styled.trackTimeSvg alt="time">
                         <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                    </svg>
-                    <span className="track__time-text">{time}</span>
-                </div>
-            </div>
-        </div>
+                    </Styled.trackTimeSvg>
+                    <Styled.trackTimeText>{time}</Styled.trackTimeText>
+                </Styled.trackTime>
+            </Styled.playlistTrack>
+        </Styled.playlistItem>
     );
 };
-
-export default PlayListItem;
