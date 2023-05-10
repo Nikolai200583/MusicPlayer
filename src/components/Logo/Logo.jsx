@@ -1,9 +1,9 @@
 import * as Styled from './Styles';
 
-export const Logo = () => {
+export const Logo = (props) => {
     return (
         <Styled.NavLogo>
-            <Styled.LogoImage src="img/logo.png" alt="logo" />
+            <Styled.LogoImage src={props.image}  alt="logo"/>
         </Styled.NavLogo>
     );
 };

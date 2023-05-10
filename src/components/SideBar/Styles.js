@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const sidebarItem = styled.div`
+export const sidebarItem = styled.li`
     width: 250px;
     height: 150px;
 
