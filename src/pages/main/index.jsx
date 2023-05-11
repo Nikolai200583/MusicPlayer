@@ -6,7 +6,6 @@ import { NavMenu } from '../../components/NavMenu/NavMenu';
 import { SideBar } from '../../components/SideBar/SideBar';
 import { BarContent } from '../../components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
-
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
 import { TRACKS } from '../../Constants/constants';
 import { SELECTION } from '../../Constants/selection';
@@ -92,7 +91,18 @@ export const Main = () => {
                 </Styled.mainSidebar>
             </Styled.main>
             <Styled.bar>
-                <BarContent loading={isLoading} />
+                <BarContent
+                  loading={isLoading} 
+                  iconPrev="img/icon/sprite.svg#icon-prev"
+                  iconPlay="img/icon/sprite.svg#icon-play"
+                  iconNext="img/icon/sprite.svg#icon-next"
+                  iconRepeat="img/icon/sprite.svg#icon-repeat"
+                  iconShuffle="img/icon/sprite.svg#icon-shuffle"
+                  iconNotef="img/icon/sprite.svg#icon-note"
+                  iconLike="img/icon/sprite.svg#icon-like"
+                  iconDislike="img/icon/sprite.svg#icon-dislike"
+                  iconVolume="img/icon/sprite.svg#icon-volume"
+                  />
             </Styled.bar>
             <Styled.footer></Styled.footer>
         </Styled.container>

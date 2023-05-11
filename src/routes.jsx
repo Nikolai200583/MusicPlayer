@@ -14,11 +14,11 @@ export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login setToken={setToken} />} />
-            <Route path="/selections/:id" element={<Selections />} />
+            <Route path="/login" element={<Login setToken={setToken} />} />         
 
             <Route element={<ProtectedRoute isAllowed={Boolean(token)} />}>
                 <Route path="/" element={<Main />} />
+                <Route path="/selections/:id" element={<Selections />} />
                 <Route path="/myTrack" element={<MyTrack />} />
             </Route>
             <Route path="*" element={<NotFound />} />

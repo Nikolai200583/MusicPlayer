@@ -1,5 +1,4 @@
 import { AppRoutes } from './routes';
-
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { GlobalStyle } from './components/App/GlobalStyle';
 import * as Styled from './components/App/Styles';

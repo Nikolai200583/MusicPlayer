@@ -152,6 +152,12 @@ export const sidebarAvatar = styled.div`
     background-color: #313131;
     border-radius: 50%;
 `;
+export const sidebarExit = styled.div`
+width: 40px;
+height: 40px;
+fill: transparent;
+background-image: url(../../img/exit.png)
+`;
 export const sidebarList = styled.div`
     display: flex;
     flex-direction: column;

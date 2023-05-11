@@ -53,14 +53,29 @@ padding-bottom: 8px;
     line-height: 24px;
 }
 }
-
+`;
+export const PasswordInputRep = styled.input`
+width: 278.5px;
+height: 35px;
+border: none;
+border-bottom: 1px solid #D0CECE;;
+margin-bottom: 60px;
+padding-bottom: 8px;
+::placeholder {       
+    color: #E1E1E1;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+}
 `;
 export const BtnEnter = styled.button`
     width: 278px;
     height: 52px;
     background: #580ea2;
     border-radius: 6px;
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
@@ -72,13 +87,13 @@ export const BtnRegistration = styled.button`
     border: 1px solid #d0cece;
     background: #ffffff;
     border-radius: 6px;
-    margin-bottom: 47px;   
+    margin-bottom: 47px;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
     color: #000000;
 `;
- export const Navigation = styled.nav`
- display: flex;
- flex-direction: column;
- `;
+export const Navigation = styled.nav`
+    display: flex;
+    flex-direction: column;
+`;

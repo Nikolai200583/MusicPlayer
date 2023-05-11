@@ -2,6 +2,7 @@ export const SELECTION = [
     {
         id: 1,
         image: 'img/playlist01.png',
+        class: 'Плейлист дня',
         items: [
             {
                 id: 8,
@@ -1835,6 +1836,7 @@ export const SELECTION = [
     {
         id: 2,
         image: 'img/playlist02.png',
+        class: '100 танцевальных хитов',
         items: [
             {
                 id: 18,
@@ -2436,6 +2438,7 @@ export const SELECTION = [
     {
         id: 3,
         image: 'img/playlist03.png',
+        class: 'Инди заряд',
         items: [
             {
                 id: 28,

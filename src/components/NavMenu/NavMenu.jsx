@@ -1,6 +1,6 @@
 import * as Styled from './Styles';
 
-export const NavMenu = ({ active, setActive, user, onAuthButtonClick }) => {
+export const NavMenu = ({ active, setActive}) => {
     const items = [
         { value: 'Главная', href: 'http://' },
         { value: 'Мой плейлист', href: 'http://' },
