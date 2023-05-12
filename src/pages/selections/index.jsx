@@ -85,7 +85,7 @@ const handleBackButtonClick = () => {
                 </Styled.mainCenterblock>
                 <Styled.mainSidebar>
                     <Styled.sidebarPersonal>
-                        <Styled.sidebarExit onClick={handleBackButtonClick}/>                      
+                        <Styled.sidebarExit onClick={handleBackButtonClick}/>                     
                         
                     </Styled.sidebarPersonal>
                    

@@ -10,6 +10,7 @@ import { CenterblockFilter } from '../../components/CenterblockFilter/Centerbloc
 import { TRACKS } from '../../Constants/constants';
 import { SELECTION } from '../../Constants/selection';
 export const Main = () => {
+    
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);
 

@@ -1,12 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Styled from './Styles';
 import { Logo } from '../Logo/Logo';
 
 export const LoginForm = ({ setToken }) => {
+    const navigate = useNavigate();
+
     function handleLogin() {
         const token = 'Coocushki';
         document.cookie = `token=${token}`;
         setToken(token);
+        navigate('/');
+    }
+
+    function handleRegistration() {
+        navigate('/registration');
     }
 
     return (
@@ -17,13 +24,10 @@ export const LoginForm = ({ setToken }) => {
                 <Styled.PasswordInput placeholder="Пароль" />
                 <Styled.Navigation>
                     <Styled.BtnEnter onClick={handleLogin}>
-                        <NavLink to="/"> Войти </NavLink>
+                        Войти
                     </Styled.BtnEnter>
-                    <Styled.BtnRegistration>
-                        <NavLink to="/registration">
-                            {' '}
-                            Зарегистрироваться{' '}
-                        </NavLink>
+                    <Styled.BtnRegistration onClick={handleRegistration}>
+                        Зарегистрироваться{' '}
                     </Styled.BtnRegistration>
                 </Styled.Navigation>
             </Styled.LoginForms>
