@@ -153,10 +153,11 @@ export const sidebarAvatar = styled.div`
     border-radius: 50%;
 `;
 export const sidebarExit = styled.div`
-width: 40px;
-height: 40px;
-fill: transparent;
-background-image: url(../../img/exit.png)
+    width: 40px;
+    height: 40px;
+    fill: transparent;
+    background-image: url(../../img/exit.png);
+    cursor: pointer;
 `;
 export const sidebarList = styled.div`
     display: flex;

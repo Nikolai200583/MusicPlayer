@@ -5,6 +5,11 @@ import { Logo } from '../Logo/Logo';
 export const LoginForm = ({ setToken }) => {
     const navigate = useNavigate();
 
+    //     const tokenApp = document.cookie.slice(6);
+    //    if (tokenApp) {
+    //     setToken(tokenApp)
+    //    }
+
     function handleLogin() {
         const token = 'Coocushki';
         document.cookie = `token=${token}`;
@@ -27,7 +32,7 @@ export const LoginForm = ({ setToken }) => {
                         Войти
                     </Styled.BtnEnter>
                     <Styled.BtnRegistration onClick={handleRegistration}>
-                        Зарегистрироваться{' '}
+                        Зарегистрироваться
                     </Styled.BtnRegistration>
                 </Styled.Navigation>
             </Styled.LoginForms>

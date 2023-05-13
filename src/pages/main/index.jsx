@@ -9,14 +9,12 @@ import { useState, useEffect } from 'react';
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
 import { TRACKS } from '../../Constants/constants';
 import { SELECTION } from '../../Constants/selection';
-export const Main = () => {
-    
-    const [menuActive, setMenuActive] = useState(false);
-    const [isLoading, setLoading] = useState(true);
 
-    const [user, setUser] = useState(null);
-    const handleLogin = () => setUser({ login: 'taradam' });
-    const handleLogout = () => setUser(null);
+export const Main = () => {
+  
+    const [menuActive, setMenuActive] = useState(false);
+    const [isLoading, setLoading] = useState(true);  
+    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -33,9 +31,7 @@ export const Main = () => {
                     <NavBurger active={menuActive} setActive={setMenuActive} />
                     <NavMenu
                         active={menuActive}
-                        setActive={setMenuActive}
-                        user={user}
-                        onAuthButtonClick={user ? handleLogout : handleLogin}
+                        setActive={setMenuActive}                                             
                     />
                 </Styled.mainNav>
                 <Styled.mainCenterblock>
@@ -102,7 +98,7 @@ export const Main = () => {
                   iconNotef="img/icon/sprite.svg#icon-note"
                   iconLike="img/icon/sprite.svg#icon-like"
                   iconDislike="img/icon/sprite.svg#icon-dislike"
-                  iconVolume="img/icon/sprite.svg#icon-volume"
+                  iconVolume="img/icon/sprite.svg#icon-volume"                 
                   />
             </Styled.bar>
             <Styled.footer></Styled.footer>

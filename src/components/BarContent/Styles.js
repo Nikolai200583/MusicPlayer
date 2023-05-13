@@ -15,6 +15,21 @@ export const barPlayerProgress = styled.div`
     height: 5px;
     background: #2e2e2e;
 `;
+export const navigationWrapper= styled.div`
+    min-width: 100%;
+    background-color: rgba(119, 119, 119, 0.781);
+    height: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+`;
+
+export const seekBar = styled.div`
+    width: 0%;
+    height: 100%;
+    background-color: purple;
+    border-radius: 30px;
+`;
+
 export const barPlayerBlock = styled.div`
     height: 73px;
     display: flex;
@@ -35,6 +50,16 @@ export const playerControls = styled.div`
 export const playerBtnPrev = styled.div`
     ${btnMixin}
     margin-right: 23px;
+    :hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        cursor: pointer;
+    }
+    :active svg {
+        fill: transparent;
+        stroke: #ffffff;
+        cursor: pointer;
+    }
 `;
 export const playerBtnPrevSvg = styled.svg`
     width: 15px;
@@ -43,7 +68,16 @@ export const playerBtnPrevSvg = styled.svg`
 export const playerBtnPlay = styled.div`
     ${btnMixin}
     margin-right: 23px;
-    cursor: pointer;
+    :hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        cursor: pointer;
+    }
+    :active svg {
+        fill: transparent;
+        stroke: #ffffff;
+        cursor: pointer;
+    }
 `;
 export const playerBtnPlaySvg = styled.svg`
     width: 22px;
@@ -54,6 +88,16 @@ export const playerBtnNext = styled.div`
     ${btnMixin}
     margin-right: 28px;
     fill: #a53939;
+    :hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        cursor: pointer;
+    }
+    :active svg {
+        fill: transparent;
+        stroke: #ffffff;
+        cursor: pointer;
+    }
 `;
 export const playerBtnNextSvg = styled.svg`
     width: 15px;
@@ -86,12 +130,6 @@ export const playerBtnShuffle = styled.div`
     ${btnMixin}
     display: flex;
     align-items: center;
-`;
-export const playerBtnShuffleSvg = styled.svg`
-    width: 19px;
-    height: 12px;
-    fill: transparent;
-    stroke: #696969;
     :hover svg {
         fill: transparent;
         stroke: #acacac;
@@ -102,6 +140,13 @@ export const playerBtnShuffleSvg = styled.svg`
         stroke: #ffffff;
         cursor: pointer;
     }
+`;
+export const playerBtnShuffleSvg = styled.svg`
+    width: 19px;
+    height: 12px;
+    fill: transparent;
+    stroke: #696969;
+    
 `;
 export const playerTrackPlay = styled.div`
     display: flex;
@@ -129,6 +174,7 @@ export const trackPlaySvg = styled.svg`
     height: 17px;
     fill: transparent;
     stroke: #4e4e4e;
+    
 `;
 export const trackPlayAuthor = styled.div`
     grid-area: author;

@@ -1,11 +1,54 @@
+import { useState, useRef, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as Styled from './Styles';
 
 export const BarContent = (props) => {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentSong, setCurrentSong] = useState();
+
+    const ref = useRef(null);
+    const clickRef = useRef();
+    const src = '/audio/Bobby_Marleni_-_Dropin.mp3';
+
+    useEffect(() => {
+        if (isPlaying) {
+            ref.current.play();
+        } else {
+            ref.current.pause();
+        }
+    }, [isPlaying]);
+
+    const onPlaying = () => {
+        const duration = ref.current.duration;
+        const ct = ref.current.currentTime;
+        setCurrentSong({
+            ...currentSong,
+            progress: (ct / duration) * 100,
+            length: duration,
+        });
+    };
+    const checkWidth = (e) => {
+        let width = clickRef.current.clientWidth;
+        const offset = e.nativeEvent.offsetX;
+        const divprogress = (offset / width) * 100;
+        ref.current.currentTime = (divprogress / 100) * currentSong.length;
+    };
+    console.log(currentSong);
     return (
         <Styled.barContent>
-            <Styled.barPlayerProgress></Styled.barPlayerProgress>
+            <audio ref={ref} src={src} onTimeUpdate={onPlaying} />
+            <Styled.barPlayerProgress>
+                <Styled.navigationWrapper onClick={checkWidth} ref={clickRef}>
+                    <Styled.seekBar
+                        style={{
+                            width: currentSong
+                                ? `${currentSong.progress + '%'}`
+                                : '',
+                        }}
+                    ></Styled.seekBar>
+                </Styled.navigationWrapper>
+            </Styled.barPlayerProgress>
             <Styled.barPlayerBlock>
                 <Styled.barPlayer>
                     <Styled.playerControls>
@@ -15,7 +58,10 @@ export const BarContent = (props) => {
                             </Styled.playerBtnPrevSvg>
                         </Styled.playerBtnPrev>
                         <Styled.playerBtnPlay>
-                            <Styled.playerBtnPlaySvg alt="play">
+                            <Styled.playerBtnPlaySvg
+                                onClick={() => setIsPlaying(!isPlaying)}
+                                alt="play"
+                            >
                                 <use xlinkHref={props.iconPlay}></use>
                             </Styled.playerBtnPlaySvg>
                         </Styled.playerBtnPlay>
@@ -67,7 +113,6 @@ export const BarContent = (props) => {
                                 )}
                             </Styled.trackPlayAlbum>
                         </Styled.trackPlayContain>
-
                         <Styled.trackPlayLikeDis>
                             <Styled.trackPlayLike>
                                 <Styled.trackPlayLikeSvg alt="like">
@@ -93,8 +138,7 @@ export const BarContent = (props) => {
                             <Styled.barVolumeProgressLine
                                 type="range"
                                 name="range"
-                            />{' '}
-                            {/*_btn */}
+                            />
                         </Styled.barVolumeProgress>
                     </Styled.barVolumeContent>
                 </Styled.barVolumeBlock>
