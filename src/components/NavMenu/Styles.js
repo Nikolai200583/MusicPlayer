@@ -8,7 +8,7 @@ export const navMenuActiv = styled.div`
         width: 100vw;
         height: 100vh;
         transform: translateX(-100%);
-        transition: all 3s;
+        transition: all 3s;        
     }
 
     &.active {
@@ -31,4 +31,11 @@ export const menuLink = styled.a`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
+`;
+export const themeSvg = styled.svg`
+    width: 39px;
+    height: 39px;
+    margin-right: 5px;
+    stroke: #ffffff;
+    fill: transparent;
 `;

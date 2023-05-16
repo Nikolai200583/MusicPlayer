@@ -33,8 +33,7 @@ export const BarContent = (props) => {
         const offset = e.nativeEvent.offsetX;
         const divprogress = (offset / width) * 100;
         ref.current.currentTime = (divprogress / 100) * currentSong.length;
-    };
-    console.log(currentSong);
+    };   
     return (
         <Styled.barContent>
             <audio ref={ref} src={src} onTimeUpdate={onPlaying} />

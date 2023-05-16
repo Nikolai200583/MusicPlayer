@@ -28,6 +28,7 @@ export const seekBar = styled.div`
     height: 100%;
     background-color: purple;
     border-radius: 30px;
+    transition: linear 0.3s
 `;
 
 export const barPlayerBlock = styled.div`

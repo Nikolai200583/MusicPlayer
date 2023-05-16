@@ -19,7 +19,11 @@ export const NavMenu = ({ active, setActive}) => {
                         </Styled.menuLink>
                     </Styled.menuItem>
                 ))}
-            </Styled.menuList>           
+                 
+            </Styled.menuList>
+            <Styled.themeSvg>
+                    <use xlinkHref="img/icon/sprite.svg#icon-helfMoon"></use>
+                </Styled.themeSvg>
         </Styled.navMenuActiv>
     );
 };
