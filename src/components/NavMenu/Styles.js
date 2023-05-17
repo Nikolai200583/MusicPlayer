@@ -8,7 +8,8 @@ export const navMenuActiv = styled.div`
         width: 100vw;
         height: 100vh;
         transform: translateX(-100%);
-        transition: all 3s;        
+        transition: all 3s;   
+        
     }
 
     &.active {
@@ -27,10 +28,10 @@ export const menuItem = styled.li`
     margin-bottom: 16px;
 `;
 export const menuLink = styled.a`
-    color: #ffffff;
+    color: ${(props) => props.theme.title};
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 24px;    
 `;
 export const themeSvg = styled.svg`
     width: 39px;

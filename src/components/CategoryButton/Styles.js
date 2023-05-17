@@ -6,11 +6,11 @@ export const filterButton = styled.button`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    border: 1px solid #ffffff;
+    border: ${(props) => props.theme.border};
     border-radius: 60px;
     padding: 6px 20px;
-    background-color: #181818;
-    color: #ffffff;
+    background-color:  ${(props) => props.theme.body};
+    color: ${(props) => props.theme.title};
 
     &.activeButton {
         border-color: #ad61ff;

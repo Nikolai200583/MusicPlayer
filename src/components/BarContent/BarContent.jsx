@@ -61,7 +61,7 @@ export const BarContent = (props) => {
                                 onClick={() => setIsPlaying(!isPlaying)}
                                 alt="play"
                             >
-                                <use xlinkHref={props.iconPlay}></use>
+                                <use xlinkHref={isPlaying ? props.iconPause : props.iconPlay}></use>
                             </Styled.playerBtnPlaySvg>
                         </Styled.playerBtnPlay>
                         <Styled.playerBtnNext>

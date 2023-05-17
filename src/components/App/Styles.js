@@ -20,8 +20,9 @@ export const container = styled.div`
     height: 100vh;
     margin: 0 auto;
     position: relative;
-    background-color: #181818;
+    background-color: ${(props) => props.theme.body};
 `;
+
 export const main = styled.main`
     flex: 1 1 auto;
     display: flex;
@@ -30,7 +31,7 @@ export const main = styled.main`
 `;
 export const mainNav = styled.nav`
     width: 244px;
-    background-color: #181818;
+    background-color: ${(props) => props.theme.body};
     padding: 20px 0 20px 36px;
 `;
 export const mainCenterblock = styled.div`
@@ -62,10 +63,10 @@ export const searchText = styled.input`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #ffffff;
+    color: ${(props) => props.theme.title};
     ::placeholder {
         background-color: transparent;
-        color: #ffffff;
+        color: ${(props) => props.theme.title};
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
@@ -79,6 +80,7 @@ export const centerblockH2 = styled.h2`
     line-height: 72px;
     letter-spacing: -0.8px;
     margin-bottom: 45px;
+    color: ${(props) => props.theme.title};
 `;
 export const centerblockContent = styled.div`
     display: flex;
@@ -146,10 +148,9 @@ export const sidebarBlock = styled.div`
     flex-direction: column;
     justify-content: flex-start;
 `;
-export const sidebarAvatar = styled.div`
+export const sidebarAvatar = styled.svg`
     width: 43px;
     height: 43px;
-    background-color: #313131;
     border-radius: 50%;
 `;
 export const sidebarExit = styled.div`
@@ -169,7 +170,7 @@ export const bar = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(28, 28, 28, 0.5);    
+    background: ${(props) => props.theme.barBack};
 `;
 
 export const footer = styled.footer``;

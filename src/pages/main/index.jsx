@@ -1,4 +1,5 @@
 import * as Styled from '../../components/App/Styles';
+import { ThemeProvider } from 'styled-components';
 import { PlayListItem } from '../../components/PlayListItems/PlayListItem';
 import { Logo } from '../../components/Logo/Logo';
 import { NavBurger } from '../../components/NavBurger/NavBurger';
@@ -13,8 +14,34 @@ import { SELECTION } from '../../Constants/selection';
 export const Main = () => {
   
     const [menuActive, setMenuActive] = useState(false);
-    const [isLoading, setLoading] = useState(true);  
+    const [isLoading, setLoading] = useState(true);
+
+    const [theme, setTheme] = useState('dark');
+    const isDarkTheme = theme === 'dark';
+    const [isToggled, setIsToggled] = useState(isDarkTheme);
+
+    const toggleTheme = () => {
+    setTheme(isDarkTheme ? 'light' : 'dark')
+}
+    const onToggle =() => {
+    setIsToggled(!isToggled);
+    toggleTheme()
+}
+    const darkTheme = {
+    body:'#181818',
+    title: '#fff',
+    backImageTrack: '#313131',
+    border: '1px solid #ffffff',
+    spanBurger: '#D3D3D3',    
+    }
     
+    const lightTheme = {
+        body:'#fff',
+        title: 'black',
+        backImageTrack:'#F6F4F4',
+        border: '1px solid #000000',  
+        spanBurger: '#000000',         
+    }
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -24,20 +51,25 @@ export const Main = () => {
     });
 
     return (
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Styled.container>
             <Styled.main>
                 <Styled.mainNav>
-                    <Logo image="img/logo.png" />
+                    <Logo image={isDarkTheme ? "img/logo.png" : "img/logoBlack.png"} />
                     <NavBurger active={menuActive} setActive={setMenuActive} />
                     <NavMenu
                         active={menuActive}
-                        setActive={setMenuActive}                                             
+                        setActive={setMenuActive}
+                        onToggle={onToggle}
+                        darkTheme={darkTheme}   
+                        lightTheme={lightTheme}
+                        isDarkTheme={isDarkTheme}                                          
                     />
                 </Styled.mainNav>
                 <Styled.mainCenterblock>
                     <Styled.centerblockSearch>
                         <Styled.searchSvg>
-                            <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
+                            <use xlinkHref={isDarkTheme ? "img/icon/sprite.svg#icon-search" : "img/icon/sprite.svg#icon-searchBlack"}></use>
                         </Styled.searchSvg>
                         <Styled.searchText
                             type="search"
@@ -75,10 +107,11 @@ export const Main = () => {
                 </Styled.mainCenterblock>
                 <Styled.mainSidebar>
                     <Styled.sidebarPersonal>
-                        <Styled.sidebarPersonalName>
-                            Sergey.Ivanov
+                        <Styled.sidebarPersonalName>                           
                         </Styled.sidebarPersonalName>
-                        <Styled.sidebarAvatar></Styled.sidebarAvatar>
+                        <Styled.sidebarAvatar>
+                        <use xlinkHref= {isDarkTheme ? "img/icon/sprite.svg#icon-exit" : "img/icon/sprite.svg#icon-exitBlack"}></use>
+                        </Styled.sidebarAvatar>
                     </Styled.sidebarPersonal>
                     <Styled.sidebarBlock>
                         <Styled.sidebarList>
@@ -92,6 +125,7 @@ export const Main = () => {
                   loading={isLoading} 
                   iconPrev="img/icon/sprite.svg#icon-prev"
                   iconPlay="img/icon/sprite.svg#icon-play"
+                  iconPause="img/icon/sprite.svg#icon-pause"
                   iconNext="img/icon/sprite.svg#icon-next"
                   iconRepeat="img/icon/sprite.svg#icon-repeat"
                   iconShuffle="img/icon/sprite.svg#icon-shuffle"
@@ -103,5 +137,6 @@ export const Main = () => {
             </Styled.bar>
             <Styled.footer></Styled.footer>
         </Styled.container>
+        </ThemeProvider>
     );
 };

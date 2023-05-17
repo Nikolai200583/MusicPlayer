@@ -6,16 +6,15 @@ const btnMixin = css`
     align-items: center;
 `;
 export const barContent = styled.div`
-display: flex;
-flex-direction: column;
-    }
+    display: flex;
+    flex-direction: column;
 `;
 export const barPlayerProgress = styled.div`
     width: 100%;
     height: 5px;
-    background: #2e2e2e;
+    background: ${(props) => props.theme.barLine};
 `;
-export const navigationWrapper= styled.div`
+export const navigationWrapper = styled.div`
     min-width: 100%;
     background-color: rgba(119, 119, 119, 0.781);
     height: 5px;
@@ -28,7 +27,7 @@ export const seekBar = styled.div`
     height: 100%;
     background-color: purple;
     border-radius: 30px;
-    transition: linear 0.3s
+    transition: linear 0.3s;
 `;
 
 export const barPlayerBlock = styled.div`
@@ -147,7 +146,6 @@ export const playerBtnShuffleSvg = styled.svg`
     height: 12px;
     fill: transparent;
     stroke: #696969;
-    
 `;
 export const playerTrackPlay = styled.div`
     display: flex;
@@ -175,7 +173,6 @@ export const trackPlaySvg = styled.svg`
     height: 17px;
     fill: transparent;
     stroke: #4e4e4e;
-    
 `;
 export const trackPlayAuthor = styled.div`
     grid-area: author;

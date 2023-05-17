@@ -7,6 +7,7 @@ export const centerblockFilter = styled.div`
     flex-direction: row;
     align-items: center;
     margin-bottom: 51px;
+    color: ${(props) => props.theme.title};
 `;
 
 export const filterTitle = styled.div`
@@ -15,8 +16,10 @@ export const filterTitle = styled.div`
     font-size: 16px;
     line-height: 24px;
     margin-right: 15px;
+   
 `;
 export const filterButtonBox = styled.div`
     display: flex;
     gap: 10px;
+  
 `;
