@@ -161,7 +161,7 @@ export const trackPlayContain = styled.div`
 export const trackPlayImage = styled.div`
     width: 51px;
     height: 51px;
-    background-color: #313131;
+    background-color: ${(props) => props.theme.backImageTrack};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,7 +183,7 @@ export const trackPlayAuthorLink = styled.a`
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #ffffff;
+    color: ${(props) => props.theme.title};
     white-space: nowrap;
 `;
 export const trackPlayAlbum = styled.div`
@@ -195,7 +195,7 @@ export const trackPlayAlbumLink = styled.a`
     font-weight: 400;
     font-size: 13px;
     line-height: 24px;
-    color: #ffffff;
+    color: ${(props) => props.theme.title};
 `;
 export const trackPlayLikeDis = styled.div`
     display: flex;
@@ -253,9 +253,11 @@ export const barVolumeSvg = styled.svg`
     width: 13px;
     height: 18px;
     fill: transparent;
+    stroke: ${(props) => props.theme.stroke};
 `;
 export const barVolumeProgress = styled.div`
     width: 109px;
+    color: black;
 `;
 export const barVolumeProgressLine = styled.input`
     width: 109px;

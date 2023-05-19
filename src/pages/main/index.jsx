@@ -1,5 +1,4 @@
 import * as Styled from '../../components/App/Styles';
-import { ThemeProvider } from 'styled-components';
 import { PlayListItem } from '../../components/PlayListItems/PlayListItem';
 import { Logo } from '../../components/Logo/Logo';
 import { NavBurger } from '../../components/NavBurger/NavBurger';
@@ -11,37 +10,11 @@ import { CenterblockFilter } from '../../components/CenterblockFilter/Centerbloc
 import { TRACKS } from '../../Constants/constants';
 import { SELECTION } from '../../Constants/selection';
 
-export const Main = () => {
+export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
   
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);
-
-    const [theme, setTheme] = useState('dark');
-    const isDarkTheme = theme === 'dark';
-    const [isToggled, setIsToggled] = useState(isDarkTheme);
-
-    const toggleTheme = () => {
-    setTheme(isDarkTheme ? 'light' : 'dark')
-}
-    const onToggle =() => {
-    setIsToggled(!isToggled);
-    toggleTheme()
-}
-    const darkTheme = {
-    body:'#181818',
-    title: '#fff',
-    backImageTrack: '#313131',
-    border: '1px solid #ffffff',
-    spanBurger: '#D3D3D3',    
-    }
-    
-    const lightTheme = {
-        body:'#fff',
-        title: 'black',
-        backImageTrack:'#F6F4F4',
-        border: '1px solid #000000',  
-        spanBurger: '#000000',         
-    }
+   
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -50,8 +23,7 @@ export const Main = () => {
         return () => clearTimeout(timer);
     });
 
-    return (
-        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+    return (     
         <Styled.container>
             <Styled.main>
                 <Styled.mainNav>
@@ -63,7 +35,9 @@ export const Main = () => {
                         onToggle={onToggle}
                         darkTheme={darkTheme}   
                         lightTheme={lightTheme}
-                        isDarkTheme={isDarkTheme}                                          
+                        isDarkTheme={isDarkTheme}
+                        iconHelfMoon="../img/icon/sprite.svg#icon-helfMoon"
+                        iconSun="../img/icon/sprite.svg#icon-sun"                                          
                     />
                 </Styled.mainNav>
                 <Styled.mainCenterblock>
@@ -136,7 +110,6 @@ export const Main = () => {
                   />
             </Styled.bar>
             <Styled.footer></Styled.footer>
-        </Styled.container>
-        </ThemeProvider>
+        </Styled.container>       
     );
 };

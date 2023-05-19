@@ -51,7 +51,7 @@ export const searchSvg = styled.svg`
     width: 17px;
     height: 17px;
     margin-right: 5px;
-    stroke: #ffffff;
+    stroke: ${(props) => props.theme.strokeIcon};
     fill: transparent;
 `;
 export const searchText = styled.input`
@@ -153,11 +153,10 @@ export const sidebarAvatar = styled.svg`
     height: 43px;
     border-radius: 50%;
 `;
-export const sidebarExit = styled.div`
+export const sidebarExit = styled.svg`
     width: 40px;
     height: 40px;
-    fill: transparent;
-    background-image: url(../../img/exit.png);
+    fill: transparent;    
     cursor: pointer;
 `;
 export const sidebarList = styled.div`

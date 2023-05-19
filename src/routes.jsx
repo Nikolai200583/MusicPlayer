@@ -8,17 +8,37 @@ import { Selections } from './pages/selections';
 import { ProtectedRoute } from './components/protected-route';
 import { useState } from 'react';
 
-export const AppRoutes = () => {
+export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme }) => {
     const [token, setToken] = useState();
 
     return (
         <Routes>
             <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login setToken={setToken} />} />         
+            <Route path="/login" element={<Login setToken={setToken} />} />
 
             <Route element={<ProtectedRoute isAllowed={Boolean(token)} />}>
-                <Route path="/" element={<Main />} />
-                <Route path="/selections/:id" element={<Selections />} />
+                <Route
+                    path="/"
+                    element={
+                        <Main
+                            onToggle={onToggle}
+                            darkTheme={darkTheme}
+                            lightTheme={lightTheme}
+                            isDarkTheme={isDarkTheme}
+                        />
+                    }
+                />
+                <Route
+                    path="/selections/:id"
+                    element={
+                        <Selections
+                            onToggle={onToggle}
+                            darkTheme={darkTheme}
+                            lightTheme={lightTheme}
+                            isDarkTheme={isDarkTheme}
+                        />
+                    }
+                />
                 <Route path="/myTrack" element={<MyTrack />} />
             </Route>
             <Route path="*" element={<NotFound />} />

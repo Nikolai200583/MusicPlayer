@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import * as Styled from './Styles';
 
-export const NavMenu = ({ active, setActive, onToggle, lightTheme, darkTheme, isDarkTheme}) => {
+export const NavMenu = ({ active, setActive, onToggle, lightTheme, darkTheme, isDarkTheme, iconHelfMoon, iconSun}) => {
     const items = [
         { value: 'Главная', href: 'http://' },
         { value: 'Мой плейлист', href: 'http://' },
@@ -24,7 +24,7 @@ export const NavMenu = ({ active, setActive, onToggle, lightTheme, darkTheme, is
                     </Styled.menuItem>
                 ))}
                   <Styled.themeSvg onClick={onToggle}>
-                    <use xlinkHref= {isDarkTheme ? "img/icon/sprite.svg#icon-helfMoon" : "img/icon/sprite.svg#icon-sun"}></use>
+                    <use xlinkHref= {isDarkTheme ? iconHelfMoon : iconSun}></use>
                 </Styled.themeSvg>
             </Styled.menuList>           
         </Styled.navMenuActiv>
