@@ -4,11 +4,17 @@ import { GlobalStyle } from './components/App/GlobalStyle';
 import * as Styled from './components/App/Styles';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { useGetAllMusicQuery } from './redux/musicApi';
+import { useGetSelectMusicQuery } from './redux/musicApi';
 
 export function App() {
     const [theme, setTheme] = useState('dark');
     const isDarkTheme = theme === 'dark';
     const [isToggled, setIsToggled] = useState(isDarkTheme);
+
+    const {data, isLoading} = useGetAllMusicQuery();
+    const TRACKS = data;  
+    const SELECTION = useGetSelectMusicQuery().data
 
     const toggleTheme = () => {
         setTheme(isDarkTheme ? 'light' : 'dark');
@@ -36,8 +42,13 @@ export function App() {
         stroke: '#696969',
         backDrop: '#ffffff',
     };
+  
+    
+    if (isLoading) return <h1>Loading</h1>
     return (
+        
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+        
             <SkeletonTheme
                 baseColor={isDarkTheme ? '#202020' : '#a6a6a6'}
                 highlightColor={isDarkTheme ? '#444' : '#d5d5d5'}
@@ -49,6 +60,8 @@ export function App() {
                         darkTheme={darkTheme}
                         lightTheme={lightTheme}
                         isDarkTheme={isDarkTheme}
+                        TRACKS={TRACKS}
+                        SELECTION={SELECTION}
                     />
                 </Styled.wrapper>
             </SkeletonTheme>

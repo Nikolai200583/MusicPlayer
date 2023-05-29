@@ -6,10 +6,10 @@ import { Logo } from '../../components/Logo/Logo';
 import { NavBurger } from '../../components/NavBurger/NavBurger';
 import { NavMenu } from '../../components/NavMenu/NavMenu';
 import { BarContent } from '../../components/BarContent/BarContent';
-import { SELECTION } from '../../Constants/selection';
 
-export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
-  
+export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECTION}) => {   
+    
+   
     const params = useParams();
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);

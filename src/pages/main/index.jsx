@@ -7,14 +7,13 @@ import { SideBar } from '../../components/SideBar/SideBar';
 import { BarContent } from '../../components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
-import { TRACKS } from '../../Constants/constants';
 import { SELECTION } from '../../Constants/selection';
 
-export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
+
+export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => {
   
     const [menuActive, setMenuActive] = useState(false);
-    const [isLoading, setLoading] = useState(true);
-   
+    const [isLoading, setLoading] = useState(true);   
 
     useEffect(() => {
         const timer = setTimeout(() => {

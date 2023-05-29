@@ -8,7 +8,7 @@ import { Selections } from './pages/selections';
 import { ProtectedRoute } from './components/protected-route';
 import { useState } from 'react';
 
-export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme }) => {
+export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS, SELECTION }) => {
     const [token, setToken] = useState();
 
     return (
@@ -25,6 +25,7 @@ export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme }) => {
                             darkTheme={darkTheme}
                             lightTheme={lightTheme}
                             isDarkTheme={isDarkTheme}
+                            TRACKS={TRACKS}
                         />
                     }
                 />
@@ -36,6 +37,7 @@ export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme }) => {
                             darkTheme={darkTheme}
                             lightTheme={lightTheme}
                             isDarkTheme={isDarkTheme}
+                            SELECTION={SELECTION}
                         />
                     }
                 />
