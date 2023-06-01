@@ -4,8 +4,8 @@ import { GlobalStyle } from './components/App/GlobalStyle';
 import * as Styled from './components/App/Styles';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useGetAllMusicQuery } from './redux/musicApi';
-import { useGetSelectMusicQuery } from './redux/musicApi';
+import { useGetAllMusicQuery, useGetSelectMusicQuery} from './redux/musicApi';
+
 
 export function App() {
     const [theme, setTheme] = useState('dark');
@@ -14,7 +14,9 @@ export function App() {
 
     const {data, isLoading} = useGetAllMusicQuery();
     const TRACKS = data;  
-    const SELECTION = useGetSelectMusicQuery().data
+    const SELECTION = useGetSelectMusicQuery().data;
+
+   
 
     const toggleTheme = () => {
         setTheme(isDarkTheme ? 'light' : 'dark');

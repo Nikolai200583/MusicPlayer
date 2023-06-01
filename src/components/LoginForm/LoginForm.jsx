@@ -1,21 +1,41 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import * as Styled from './Styles';
 import { Logo } from '../Logo/Logo';
+import { usePostTokenMutation, usePostLoginMutation } from '../../redux/musicApi';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../redux/slices/userSlice';
 
-export const LoginForm = ({ setToken }) => {
+export const LoginForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');    
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+  
+    const [postToken, {}] = usePostTokenMutation();
+    const [postLogin, {}] = usePostLoginMutation();
 
-    //     const tokenApp = document.cookie.slice(6);
-    //    if (tokenApp) {
-    //     setToken(tokenApp)
-    //    }
+    const handleLogin = async () => { 
 
-    function handleLogin() {
-        const token = 'Coocushki';
-        document.cookie = `token=${token}`;
-        setToken(token);
-        navigate('/');
-    }
+        await postToken({email, password}).unwrap() 
+        .then ((token) => { 
+        console.log(token);
+
+        postLogin({ email, password })
+        .then((user) => {
+            console.log(user)
+             dispatch(userLogin({
+            email: user.data.email,
+            id: user.data.id,
+            token: token.access
+        }));
+    })
+    navigate('/')
+})}      
+           
+
+   
+
 
     function handleRegistration() {
         navigate('/registration');
@@ -25,8 +45,12 @@ export const LoginForm = ({ setToken }) => {
         <Styled.ContainerLoginForm>
             <Styled.LoginForms>
                 <Logo image="img/logoBlack.png" />
-                <Styled.LoginInput placeholder="Логин" />
-                <Styled.PasswordInput placeholder="Пароль" />
+                <Styled.LoginInput type="email" 
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email" />
+                <Styled.PasswordInput type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Пароль"/>
                 <Styled.Navigation>
                     <Styled.BtnEnter onClick={handleLogin}>
                         Войти
