@@ -16,27 +16,19 @@ export const LoginForm = () => {
     const [postLogin, {}] = usePostLoginMutation();
 
     const handleLogin = async () => { 
-
         await postToken({email, password}).unwrap() 
-        .then ((token) => { 
-        console.log(token);
-
+        .then ((token) => {        
+            localStorage.setItem('token', token.refresh)
         postLogin({ email, password })
         .then((user) => {
-            console.log(user)
-             dispatch(userLogin({
+            dispatch(userLogin({
             email: user.data.email,
             id: user.data.id,
             token: token.access
         }));
     })
     navigate('/')
-})}      
-           
-
-   
-
-
+})}  
     function handleRegistration() {
         navigate('/registration');
     }

@@ -6,17 +6,17 @@ import { MyTrack } from './pages/my-tracks';
 import { Registration } from './pages/registration';
 import { Selections } from './pages/selections';
 import { ProtectedRoute } from './components/protected-route';
-import { useState } from 'react';
+
 
 export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS, SELECTION }) => {
-    const [token, setToken] = useState();
+    
 
     return (
         <Routes>
             <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login setToken={setToken} />} />
+            <Route path="/login" element={<Login/>} />
 
-            <Route element={<ProtectedRoute isAllowed={Boolean(token)} />}>
+            <Route element={<ProtectedRoute/>}>
                 <Route
                     path="/"
                     element={

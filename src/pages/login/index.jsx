@@ -1,10 +1,10 @@
 
 import { LoginForm } from '../../components/LoginForm/LoginForm';
 
-export const Login = ({setToken}) => {     
+export const Login = () => {     
     return (
       <div>
-        <LoginForm setToken = {setToken}/>     
+        <LoginForm/>     
       </div>
     );
   }
