@@ -9,7 +9,8 @@ import { BarContent } from '../../components/BarContent/BarContent';
 
 export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECTION}) => {   
     
-    const params = useParams();    
+   
+    const params = useParams();
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);
     
@@ -19,9 +20,8 @@ export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECT
         navigate('/', { replace: true });
     };
 
-    
     const playlist = SELECTION.find((user) => user.id === Number(params.id));   
-    
+     
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);

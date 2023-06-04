@@ -13,7 +13,8 @@ export function App() {
     const [isToggled, setIsToggled] = useState(isDarkTheme);
 
     const {data, isLoading} = useGetAllMusicQuery();
-    const TRACKS = data;  
+    const TRACKS = data; 
+     
     const SELECTION = useGetSelectMusicQuery().data;
 
    
