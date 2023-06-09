@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const filterDropdown = styled.div`
+export const filterDropdown = styled.ul`
     width: 135px;
     position: absolute;
     background-color: ${(props) => props.theme.backDrop};
@@ -9,7 +9,7 @@ export const filterDropdown = styled.div`
     margin-top: 10px;
 `;
 
-export const dropdownItem = styled.div`
+export const dropdownItem = styled.li`
     padding: 10px;
     cursor: pointer;
     :hover {
