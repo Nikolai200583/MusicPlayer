@@ -2,19 +2,20 @@ import * as Styled from './Styles';
 import React, { useState } from 'react';
 import { CategoryButton } from '../CategoryButton/CategoryButton';
 import { Dropdown } from '../Dropdown/Dropdown';
+import { useGetAllMusicQuery} from '../../redux/musicApi';
 
 export const CenterblockFilter = () => {
     const [activeCategory, setActiveCategory] = useState(null);
-    const categories = [
-        {name: 'Исполнители',
-            data: ['Исполнитель 1', 'Исполнитель 2', 'Исполнитель 3'],
-        },
-        { name: 'Год выпуска',
-         data: ['2020', '2019', '2018'] },
+    
+    const {data} = useGetAllMusicQuery();
+    const authorTrack = data.map(item => item.author)
+    const author = Array.from(new Set(authorTrack));
 
-        { name: 'Жанры',
-         data: ['Жанр 1', 'Жанр 2', 'Жанр 3'] },
-    ];
+    const genreTrack = data.map(item => item.genre,)
+    const genre = Array.from(new Set(genreTrack));
+
+    const years = ['Сначала новые','Сначала старые']        
+    
     const handleCategoryClick = (categoryName) => {
         if (activeCategory === categoryName) {
             setActiveCategory(null);
@@ -25,19 +26,38 @@ export const CenterblockFilter = () => {
     return (
         <Styled.centerblockFilter>
             <Styled.filterTitle>Искать по:</Styled.filterTitle>
-            <Styled.filterButtonBox>
-                {categories.map((category) => (
-                    <div key={category.name}>
+            <Styled.filterButtonBox>               
+                    <div>
                         <CategoryButton
-                            category={category.name}
-                            isActive={activeCategory === category.name}
-                            onClick={() => handleCategoryClick(category.name)}
+                            category={'Исполнители'}
+                            isActive={activeCategory === 'Исполнители'}
+                            onClick={() => handleCategoryClick('Исполнители')}
                         />
-                        {activeCategory === category.name && (
-                            <Dropdown data={category.data} />
+                        {activeCategory === 'Исполнители' && (
+                            <Dropdown data={author} />
                         )}
                     </div>
-                ))}
+                    <div>
+                        <CategoryButton
+                            category={'Год выпуска'}
+                            isActive={activeCategory === 'Год выпуска'}
+                            onClick={() => handleCategoryClick('Год выпуска')}
+                        />
+                        {activeCategory === 'Год выпуска' && (
+                            <Dropdown data={years} />
+                        )}
+                    </div>
+                    <div>
+                        <CategoryButton
+                            category={'Жанры'}
+                            isActive={activeCategory === 'Жанры'}
+                            onClick={() => handleCategoryClick('Жанры')}
+                        />
+                        {activeCategory === 'Жанры' && (
+                            <Dropdown data={genre} />
+                        )}
+                    </div>
+                
             </Styled.filterButtonBox>
         </Styled.centerblockFilter>
     );

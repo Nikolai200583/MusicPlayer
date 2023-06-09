@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as Styled from './Styles';
@@ -11,6 +12,7 @@ export const BarContent = (props) => {
     const clickRef = useRef();
     const {id, name, author, track_file} = useTrack();
     const src = track_file;
+    
 
     useEffect(() => {
         if (isPlaying) {
@@ -37,7 +39,7 @@ export const BarContent = (props) => {
     };   
     return (
         <Styled.barContent>
-            <audio ref={ref} src={src} onTimeUpdate={onPlaying} autoPlay/>
+            <audio ref={ref} src={src} onTimeUpdate={onPlaying}/>
             <Styled.barPlayerProgress>
                 <Styled.navigationWrapper onClick={checkWidth} ref={clickRef}>
                     <Styled.seekBar
