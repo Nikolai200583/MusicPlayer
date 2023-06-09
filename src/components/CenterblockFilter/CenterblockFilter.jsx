@@ -4,9 +4,11 @@ import { CategoryButton } from '../CategoryButton/CategoryButton';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { useGetAllMusicQuery} from '../../redux/musicApi';
 
-export const CenterblockFilter = () => {
+
+
+export const CenterblockFilter = ({item}) => {
     const [activeCategory, setActiveCategory] = useState(null);
-    
+   
     const {data} = useGetAllMusicQuery();
     const authorTrack = data.map(item => item.author)
     const author = Array.from(new Set(authorTrack));
@@ -14,7 +16,8 @@ export const CenterblockFilter = () => {
     const genreTrack = data.map(item => item.genre,)
     const genre = Array.from(new Set(genreTrack));
 
-    const years = ['Сначала новые','Сначала старые']        
+    const years = ['Сначала новые','Сначала старые']   
+         
     
     const handleCategoryClick = (categoryName) => {
         if (activeCategory === categoryName) {
@@ -23,6 +26,7 @@ export const CenterblockFilter = () => {
             setActiveCategory(categoryName);
         }
     };
+    
     return (
         <Styled.centerblockFilter>
             <Styled.filterTitle>Искать по:</Styled.filterTitle>
@@ -34,7 +38,9 @@ export const CenterblockFilter = () => {
                             onClick={() => handleCategoryClick('Исполнители')}
                         />
                         {activeCategory === 'Исполнители' && (
-                            <Dropdown data={author} />
+                            <Dropdown data={author}
+                            category={'Исполнители'}
+                             />
                         )}
                     </div>
                     <div>
@@ -44,7 +50,9 @@ export const CenterblockFilter = () => {
                             onClick={() => handleCategoryClick('Год выпуска')}
                         />
                         {activeCategory === 'Год выпуска' && (
-                            <Dropdown data={years} />
+                            <Dropdown data={years}
+                            category={'Год выпуска'}
+                           />
                         )}
                     </div>
                     <div>
@@ -54,7 +62,8 @@ export const CenterblockFilter = () => {
                             onClick={() => handleCategoryClick('Жанры')}
                         />
                         {activeCategory === 'Жанры' && (
-                            <Dropdown data={genre} />
+                            <Dropdown data={genre}
+                            category={'Жанры'} />
                         )}
                     </div>
                 

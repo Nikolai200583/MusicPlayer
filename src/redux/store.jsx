@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { musicApi } from "./musicApi";
 import userReduser from "./slices/userSlice";
 import currentTrackReducer from "./slices/setTracks";
+import setFiltersReducer from "./slices/setFilters"
 
 
 export const store = configureStore ({
@@ -10,7 +11,8 @@ export const store = configureStore ({
         
         [musicApi.reducerPath]: musicApi.reducer,
         user: userReduser,
-        currentTrack: currentTrackReducer
+        currentTrack: currentTrackReducer,
+        setFilters: setFiltersReducer,
              
     },
     
