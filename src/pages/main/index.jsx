@@ -7,7 +7,7 @@ import { SideBar } from '../../components/SideBar/SideBar';
 import { BarContent } from '../../components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
-import { SELECTION } from '../../Constants/selection';
+import { SELECTIONS } from '../../Constants/selection';
 
 
 export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => {
@@ -64,15 +64,16 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => 
                             </Styled.col04>
                         </Styled.contentTitle>
                         <Styled.contentPlaylist>
-                            {TRACKS.map((track, i) => (
+                            {TRACKS.map((track) => (
                                 <PlayListItem
-                                    key={i}
+                                    key={track.id}
+                                    track={track}
                                     loading={isLoading}
                                     titleTrack={track.name}
                                     titleSpan={track.titleSpan}
                                     author={track.author}
                                     album={track.album}
-                                    time={track.duration_in_seconds}
+                                    time={track.duration_in_seconds}                                    
                                 />
                             ))}
                         </Styled.contentPlaylist>
@@ -88,7 +89,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => 
                     </Styled.sidebarPersonal>
                     <Styled.sidebarBlock>
                         <Styled.sidebarList>
-                            <SideBar loading={isLoading} users={SELECTION} />
+                            <SideBar loading={isLoading} users={SELECTIONS} />
                         </Styled.sidebarList>
                     </Styled.sidebarBlock>
                 </Styled.mainSidebar>

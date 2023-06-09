@@ -3,9 +3,9 @@ import * as Styled from './Styles';
 
 export const NavMenu = ({ active, setActive, onToggle, lightTheme, darkTheme, isDarkTheme, iconHelfMoon, iconSun}) => {
     const items = [
-        { value: 'Главная', href: 'http://' },
-        { value: 'Мой плейлист', href: 'http://' },
-        { value: 'Войти', href: 'http://' },
+        { value: 'Главная', to: '/' },
+        { value: 'Мой плейлист', to: '/MyTrack' },
+        { value: 'Выйти', to: '/Login' },
     ];
 
 
@@ -18,7 +18,7 @@ export const NavMenu = ({ active, setActive, onToggle, lightTheme, darkTheme, is
             <Styled.menuList onClick={e => e.stopPropagation()}>
                 {items.map((item, i) => (
                     <Styled.menuItem key={i}>
-                        <Styled.menuLink href={item.href}>
+                        <Styled.menuLink to={item.to}>
                             {item.value}
                         </Styled.menuLink>
                     </Styled.menuItem>

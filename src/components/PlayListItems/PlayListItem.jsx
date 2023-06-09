@@ -1,8 +1,12 @@
 import * as Styled from './Styles';
+import React, {useState, useEffect} from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-
+import { usePostLikeMutation, usePostUnlikeMutation } from '../../redux/musicApi'
+import { setCurrentTrack } from '../../redux/slices/setTracks';
+import { useDispatch } from 'react-redux';
 export const PlayListItem = ({
+    track,
     titleTrack,
     titleSpan,
     author,
@@ -10,8 +14,33 @@ export const PlayListItem = ({
     time,
     loading,
 }) => {
+    const { id: trackID, stared_user} = track;
+
+    const [postLike] = usePostLikeMutation();
+    const [postUnlike] = usePostUnlikeMutation();
+    const dispatch = useDispatch()
+
+    const userId = Number(localStorage.getItem('user'));
+  
+    const [isFavourite, setFavourite] = useState(false)
+
+    useEffect(() => {
+        setFavourite(stared_user.some((user) => user.id === userId))
+      }, [track])
+
+      const handleFavorite = () => {
+        if (isFavourite) postUnlike(trackID)
+        else postLike(trackID)
+      }
+
+      const handleOnRowClick = () => {
+        dispatch(setCurrentTrack({
+            track: track,
+            
+        }));
+      }
     return (
-        <Styled.playlistItem>
+        <Styled.playlistItem onClick={() => handleOnRowClick()}>
             <Styled.playlistTrack>
                 <Styled.trackTitle>
                     <Styled.trackTitleImage>
@@ -59,8 +88,8 @@ export const PlayListItem = ({
                 </Styled.trackAlbum>
 
                 <Styled.trackTime>
-                    <Styled.trackTimeSvg alt="time">
-                        <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+                    <Styled.trackTimeSvg alt="time"  onClick={handleFavorite}>
+                        <use xlinkHref="img/icon/sprite.svg#icon-like" fill={isFavourite ? 'red' : 'gray'}></use>
                     </Styled.trackTimeSvg>
                     <Styled.trackTimeText>{time}</Styled.trackTimeText>
                 </Styled.trackTime>

@@ -4,7 +4,7 @@ import { GlobalStyle } from './components/App/GlobalStyle';
 import * as Styled from './components/App/Styles';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useGetAllMusicQuery, useGetSelectMusicQuery} from './redux/musicApi';
+import { useGetAllMusicQuery} from './redux/musicApi';
 
 
 export function App() {
@@ -13,12 +13,8 @@ export function App() {
     const [isToggled, setIsToggled] = useState(isDarkTheme);
 
     const {data, isLoading} = useGetAllMusicQuery();
-    const TRACKS = data; 
-     
-    const SELECTION = useGetSelectMusicQuery().data;
-
-   
-
+    const TRACKS = data
+    
     const toggleTheme = () => {
         setTheme(isDarkTheme ? 'light' : 'dark');
     };
@@ -63,8 +59,7 @@ export function App() {
                         darkTheme={darkTheme}
                         lightTheme={lightTheme}
                         isDarkTheme={isDarkTheme}
-                        TRACKS={TRACKS}
-                        SELECTION={SELECTION}
+                        TRACKS={TRACKS}                       
                     />
                 </Styled.wrapper>
             </SkeletonTheme>

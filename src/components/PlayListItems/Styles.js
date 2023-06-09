@@ -11,6 +11,7 @@ export const playlistTrack = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 `;
 
 export const trackTitle = styled.div`
@@ -36,7 +37,7 @@ export const trackTitleSvg = styled.svg`
     stroke: #4e4e4e;
 `;
 export const trackTitleText = styled.div``;
-export const trackTitleLink = styled.a`
+export const trackTitleLink = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

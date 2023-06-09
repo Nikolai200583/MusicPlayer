@@ -1,4 +1,4 @@
-export const SELECTION = [
+export const SELECTIONS = [
     {
         id: 1,
         image: 'img/playlist01.png',

@@ -6,11 +6,14 @@ import { MyTrack } from './pages/my-tracks';
 import { Registration } from './pages/registration';
 import { Selections } from './pages/selections';
 import { ProtectedRoute } from './components/protected-route';
+import { useGetSelectMusicQuery} from './redux/musicApi';
 
 
-export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS, SELECTION }) => {
+export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => {
+    const {data, isLoading } = useGetSelectMusicQuery();
+    const SELECTION = data; 
+    if (isLoading) return <h1>Loading</h1>
     
-
     return (
         <Routes>
             <Route path="/registration" element={<Registration />} />
@@ -41,7 +44,12 @@ export const AppRoutes = ({ onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS
                         />
                     }
                 />
-                <Route path="/myTrack" element={<MyTrack />} />
+                <Route path="/myTrack" element={<MyTrack
+                onToggle={onToggle}
+                darkTheme={darkTheme}
+                lightTheme={lightTheme}
+                isDarkTheme={isDarkTheme}
+                TRACKS={TRACKS} />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>

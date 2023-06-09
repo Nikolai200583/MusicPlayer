@@ -2,14 +2,15 @@ import { useState, useRef, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as Styled from './Styles';
+import {useTrack} from "../../hooks/use-track"
 
 export const BarContent = (props) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentSong, setCurrentSong] = useState();
-
     const ref = useRef(null);
     const clickRef = useRef();
-    const src = '/audio/Bobby_Marleni_-_Dropin.mp3';
+    const {id, name, author, track_file} = useTrack();
+    const src = track_file;
 
     useEffect(() => {
         if (isPlaying) {
@@ -36,7 +37,7 @@ export const BarContent = (props) => {
     };   
     return (
         <Styled.barContent>
-            <audio ref={ref} src={src} onTimeUpdate={onPlaying} />
+            <audio ref={ref} src={src} onTimeUpdate={onPlaying} autoPlay/>
             <Styled.barPlayerProgress>
                 <Styled.navigationWrapper onClick={checkWidth} ref={clickRef}>
                     <Styled.seekBar
@@ -98,7 +99,7 @@ export const BarContent = (props) => {
                                     <Skeleton />
                                 ) : (
                                     <Styled.trackPlayAuthorLink href="http://">
-                                        Ты та...
+                                       {name}
                                     </Styled.trackPlayAuthorLink>
                                 )}
                             </Styled.trackPlayAuthor>
@@ -107,7 +108,7 @@ export const BarContent = (props) => {
                                     <Skeleton />
                                 ) : (
                                     <Styled.trackPlayAlbumLink href="http://">
-                                        Баста
+                                        {author}
                                     </Styled.trackPlayAlbumLink>
                                 )}
                             </Styled.trackPlayAlbum>

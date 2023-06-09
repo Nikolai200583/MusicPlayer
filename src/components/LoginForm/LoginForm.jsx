@@ -21,6 +21,7 @@ export const LoginForm = () => {
             localStorage.setItem('token', token.refresh)
         postLogin({ email, password })
         .then((user) => {
+            localStorage.setItem('user', user.data.id)
             dispatch(userLogin({
             email: user.data.email,
             id: user.data.id,

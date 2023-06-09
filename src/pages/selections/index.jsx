@@ -19,13 +19,13 @@ export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECT
     const handleBackButtonClick = () => {
         navigate('/', { replace: true });
     };
-
-    const playlist = SELECTION.find((user) => user.id === Number(params.id));   
+    const playlist = SELECTION.find((user) => user.id === Number(params.id)); 
+    console.log(playlist)  
      
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 2000);
         return () => clearTimeout(timer);
     });
 
@@ -87,14 +87,16 @@ export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECT
                                 </Styled.col04>
                             </Styled.contentTitle>
                             <Styled.contentPlaylist>
-                                {playlist.items.map((track, i) => (
+                                {playlist.items.map((track) => (
                                     <PlayListItem
-                                        key={i}
-                                        loading={isLoading}
-                                        titleTrack={track.name}
-                                        author={track.author}
-                                        album={track.album}
-                                        time={track.duration_in_seconds}
+                                    key={track.id}
+                                    track={track}
+                                    loading={isLoading}
+                                    titleTrack={track.name}
+                                    titleSpan={track.titleSpan}
+                                    author={track.author}
+                                    album={track.album}
+                                    time={track.duration_in_seconds}
                                     />
                                 ))}
                             </Styled.contentPlaylist>

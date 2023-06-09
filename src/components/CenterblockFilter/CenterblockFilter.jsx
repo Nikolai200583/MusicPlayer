@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 import { CategoryButton } from '../CategoryButton/CategoryButton';
 import { Dropdown } from '../Dropdown/Dropdown';
 
-export const CenterblockFilter = ({ tracks }) => {
+export const CenterblockFilter = () => {
     const [activeCategory, setActiveCategory] = useState(null);
     const categories = [
-        {
-            name: 'Исполнители',
+        {name: 'Исполнители',
             data: ['Исполнитель 1', 'Исполнитель 2', 'Исполнитель 3'],
         },
-        { name: 'Год выпуска', data: ['2020', '2019', '2018'] },
-        { name: 'Жанры', data: ['Жанр 1', 'Жанр 2', 'Жанр 3'] },
+        { name: 'Год выпуска',
+         data: ['2020', '2019', '2018'] },
+
+        { name: 'Жанры',
+         data: ['Жанр 1', 'Жанр 2', 'Жанр 3'] },
     ];
     const handleCategoryClick = (categoryName) => {
         if (activeCategory === categoryName) {
