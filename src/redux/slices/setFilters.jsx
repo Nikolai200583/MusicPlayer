@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {   
-    years: ''
+    years: [],
+    author: [],
+    genre: []
   };
 
 const setFilters = createSlice({
@@ -10,14 +12,28 @@ const setFilters = createSlice({
   
 
   reducers: {   
-
     setFilterYears: (state, action) => {
-    state.years = action.payload.years;     
+        state.years = action.payload.years;     
     },
 
+    setFilterAuthor: (state, action) => { 
+         
+        if(state.author.includes(action.payload.author)){
+            return
+        }       
+        state.author.push(action.payload.author);     
+        },
+
+    setFilterGenre: (state, action) => {
+
+        if(state.genre.includes(action.payload.genre)){
+            return
+        } 
+        state.genre.push(action.payload.genre);       
+    },
    
   },
 });
 
-export const {setFilterYears} = setFilters.actions;
+export const {setFilterYears, setFilterAuthor, setFilterGenre} = setFilters.actions;
 export default setFilters.reducer;
