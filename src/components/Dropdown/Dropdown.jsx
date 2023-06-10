@@ -1,20 +1,25 @@
 import * as Styled from './Styles';
-import { setFilterYears} from '../../redux/slices/setFilters';
+import { setFilterYears, setFilterAuthor, setFilterGenre} from '../../redux/slices/setFilters';
 import { useDispatch } from 'react-redux';
 
 export const Dropdown = ({ data, category }) => { 
     const dispatch = useDispatch()
     
 
-    const handleFilterYearClick = (item) => {
+    const handleFilterClick = (item) => {
        switch (category) {
         case 'Год выпуска': dispatch(setFilterYears({
-            years: item,
-            
-        }));
-            
+            years: item,            
+        }));           
             break;
-       
+        case 'Исполнители': dispatch(setFilterAuthor({
+            author: item,            
+        }));           
+                break;
+        case 'Жанры': dispatch(setFilterGenre({
+            genre: item,            
+        }));           
+                break;
         default:
             break;
        }
@@ -22,7 +27,7 @@ export const Dropdown = ({ data, category }) => {
     return (
         <Styled.filterDropdown>
             {data.map((item, i) => (
-                <Styled.dropdownItem key={i} onClick={() => handleFilterYearClick(item)}> {item} </Styled.dropdownItem>
+                <Styled.dropdownItem key={i} onClick={() => handleFilterClick(item)}> {item} </Styled.dropdownItem>
             ))}
         </Styled.filterDropdown>
     );
