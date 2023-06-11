@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {   
-    track: {}
+    track: {},
+    
   };
 
 const setTracks = createSlice({
@@ -13,8 +14,7 @@ const setTracks = createSlice({
 
     setCurrentTrack: (state, action) => {
       state.track = action.payload.track;     
-    },
-
+    },    
    
   },
 });

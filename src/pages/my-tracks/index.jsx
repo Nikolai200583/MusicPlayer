@@ -24,7 +24,7 @@ export const MyTrack = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 2000);
         return () => clearTimeout(timer);
     });
 
@@ -107,7 +107,8 @@ export const MyTrack = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                   iconNotef="img/icon/sprite.svg#icon-note"
                   iconLike="img/icon/sprite.svg#icon-like"
                   iconDislike="img/icon/sprite.svg#icon-dislike"
-                  iconVolume="img/icon/sprite.svg#icon-volume"                 
+                  iconVolume="img/icon/sprite.svg#icon-volume" 
+                  tracks = {TRACKS}                
                   />
             </Styled.bar>
             <Styled.footer></Styled.footer>

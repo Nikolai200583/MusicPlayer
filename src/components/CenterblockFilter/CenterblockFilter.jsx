@@ -6,7 +6,7 @@ import { useGetAllMusicQuery} from '../../redux/musicApi';
 
 
 
-export const CenterblockFilter = ({item}) => {
+export const CenterblockFilter = () => {
     const [activeCategory, setActiveCategory] = useState(null);
    
     const {data} = useGetAllMusicQuery();

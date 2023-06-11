@@ -20,7 +20,7 @@ export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECT
         navigate('/', { replace: true });
     };
     const playlist = SELECTION.find((user) => user.id === Number(params.id)); 
-    console.log(playlist)  
+   
      
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -123,6 +123,7 @@ export const Selections = ({onToggle, lightTheme, darkTheme, isDarkTheme, SELECT
                         iconLike="../img/icon/sprite.svg#icon-like"
                         iconDislike="../img/icon/sprite.svg#icon-dislike"
                         iconVolume="../img/icon/sprite.svg#icon-volume"
+                        tracks = {playlist.items} 
                     />
                 </Styled.bar>
                 <Styled.footer></Styled.footer>

@@ -8,13 +8,20 @@ import { BarContent } from '../../components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
 import { SELECTIONS } from '../../Constants/selection';
+import { useSelector } from "react-redux";
 
 
 export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => {
   
     const [menuActive, setMenuActive] = useState(false);
-    const [isLoading, setLoading] = useState(true);   
+    const [isLoading, setLoading] = useState(true);  
 
+    const filterAuthor = useSelector(state => state.setFilters.author)
+
+    let result = TRACKS.filter( element => filterAuthor.every( i => element.name.includes(i) ) );
+
+    console.log(result)
+   
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
@@ -106,7 +113,8 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => 
                   iconNotef="img/icon/sprite.svg#icon-note"
                   iconLike="img/icon/sprite.svg#icon-like"
                   iconDislike="img/icon/sprite.svg#icon-dislike"
-                  iconVolume="img/icon/sprite.svg#icon-volume"                 
+                  iconVolume="img/icon/sprite.svg#icon-volume"
+                  tracks = {TRACKS}                 
                   />
             </Styled.bar>
             <Styled.footer></Styled.footer>

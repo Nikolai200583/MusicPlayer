@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { usePostLikeMutation, usePostUnlikeMutation } from '../../redux/musicApi'
-import { setCurrentTrack } from '../../redux/slices/setTracks';
+import { setCurrentTrack} from '../../redux/slices/setTracks';
 import { useDispatch } from 'react-redux';
 export const PlayListItem = ({
     track,
@@ -35,9 +35,9 @@ export const PlayListItem = ({
 
       const handleOnRowClick = () => {
         dispatch(setCurrentTrack({
-            track: track,
-            
-        }));
+            track: track,            
+        }),       
+        );        
       }
     return (
         <Styled.playlistItem onClick={() => handleOnRowClick()}>

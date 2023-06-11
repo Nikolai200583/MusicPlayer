@@ -7,14 +7,14 @@ import { ThemeProvider } from 'styled-components';
 import { useGetAllMusicQuery} from './redux/musicApi';
 
 
+
 export function App() {
     const [theme, setTheme] = useState('dark');
     const isDarkTheme = theme === 'dark';
-    const [isToggled, setIsToggled] = useState(isDarkTheme);
-
-    const {data, isLoading} = useGetAllMusicQuery();
+    const [isToggled, setIsToggled] = useState(isDarkTheme);  
+    const {data, isLoading} = useGetAllMusicQuery();    
     const TRACKS = data
-    
+ 
     const toggleTheme = () => {
         setTheme(isDarkTheme ? 'light' : 'dark');
     };

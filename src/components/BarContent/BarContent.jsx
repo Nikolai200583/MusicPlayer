@@ -1,36 +1,84 @@
-import { useState, useRef, useEffect } from 'react';
-
+import { useState, useRef, useEffect} from 'react';
+import { useAudio } from "react-use"
+import { useDispatch } from 'react-redux';
+import { setCurrentTrack} from '../../redux/slices/setTracks';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import * as Styled from './Styles';
 import {useTrack} from "../../hooks/use-track"
 
 export const BarContent = (props) => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const dispatch = useDispatch()  
+    
+    const [isShuffle, setShuffle] = useState(false)
+    const [isRepeat, setRepeat] = useState(false)
     const [currentSong, setCurrentSong] = useState();
     const ref = useRef(null);
     const clickRef = useRef();
-    const {id, name, author, track_file} = useTrack();
-    const src = track_file;
+    const {id, name, author} = useTrack();
     
+    const tracks = props.tracks 
 
+    let index = tracks.findIndex((track) => track.id === id);    
+    if (index < 0) {
+        index = 0
+    }
+   
+    const playingTrack = tracks[index];    
+ 
+
+    const [audio, state, controls,] = useAudio({
+        
+        src: playingTrack.track_file,
+        autoPlay: false,
+        onEnded: () => {
+          if (!isRepeat) {
+            handleNext()
+          } else {
+            controls.seek(0)
+            controls.play()
+          }
+        },
+      })
+      const handleNext = () => {
+        if (isShuffle) {
+          index = Math.floor(Math.random() * tracks.length)
+          
+        } else index++
+    
+        index = index > tracks.length - 1 ? 0 : tracks[index]
+        
+        dispatch(setCurrentTrack({
+            track: index,            
+        }),       
+        );
+      }
+      const handlePrev = () => {
+        if (isShuffle) {
+            index = Math.floor(Math.random() * tracks.length)
+        } else index--
+    
+        index = index < 0 ? 0 : tracks[index]
+        dispatch(setCurrentTrack({
+            track: index,            
+        }),       
+        );
+      }
+  
+     
     useEffect(() => {
-        if (isPlaying) {
-            ref.current.play();
-        } else {
-            ref.current.pause();
-        }
-    }, [isPlaying]);
-
-    const onPlaying = () => {
-        const duration = ref.current.duration;
-        const ct = ref.current.currentTime;
+        const duration = state.duration;
+        const ct = state.time;
+        
         setCurrentSong({
             ...currentSong,
             progress: (ct / duration) * 100,
             length: duration,
-        });
-    };
+        });        
+    },[state])
+    
+
+
     const checkWidth = (e) => {
         let width = clickRef.current.clientWidth;
         const offset = e.nativeEvent.offsetX;
@@ -39,7 +87,7 @@ export const BarContent = (props) => {
     };   
     return (
         <Styled.barContent>
-            <audio ref={ref} src={src} onTimeUpdate={onPlaying}/>
+            {audio}
             <Styled.barPlayerProgress>
                 <Styled.navigationWrapper onClick={checkWidth} ref={clickRef}>
                     <Styled.seekBar
@@ -55,31 +103,39 @@ export const BarContent = (props) => {
                 <Styled.barPlayer>
                     <Styled.playerControls>
                         <Styled.playerBtnPrev>
-                            <Styled.playerBtnPrevSvg alt="prev">
+                            <Styled.playerBtnPrevSvg
+                            onClick={() => handlePrev()}
+                            alt="prev">
                                 <use xlinkHref={props.iconPrev}></use>
                             </Styled.playerBtnPrevSvg>
                         </Styled.playerBtnPrev>
                         <Styled.playerBtnPlay>
                             <Styled.playerBtnPlaySvg
-                                onClick={() => setIsPlaying(!isPlaying)}
+                                onClick={state.playing ? controls.pause: controls.play}
                                 alt="play"
                             >
-                                <use xlinkHref={isPlaying ? props.iconPause : props.iconPlay}></use>
+                                <use xlinkHref={state.playing ? props.iconPause : props.iconPlay}></use>
                             </Styled.playerBtnPlaySvg>
                         </Styled.playerBtnPlay>
                         <Styled.playerBtnNext>
-                            <Styled.playerBtnNextSvg alt="next">
+                            <Styled.playerBtnNextSvg
+                             onClick={() => handleNext()}
+                             alt="next">
                                 <use xlinkHref={props.iconNext}></use>
                             </Styled.playerBtnNextSvg>
                         </Styled.playerBtnNext>
                         <Styled.playerBtnRepeat>
-                            <Styled.playerBtnRepeatSvg alt="repeat">
-                                <use xlinkHref={props.iconRepeat}></use>
+                            <Styled.playerBtnRepeatSvg
+                            onClick={() => setRepeat(!isRepeat)}
+                            alt="repeat">
+                                <use xlinkHref={props.iconRepeat} stroke={isRepeat ? 'purple' : ''}></use>
                             </Styled.playerBtnRepeatSvg>
                         </Styled.playerBtnRepeat>
                         <Styled.playerBtnShuffle>
-                            <Styled.playerBtnShuffleSvg alt="shuffle">
-                                <use xlinkHref={props.iconShuffle}></use>
+                            <Styled.playerBtnShuffleSvg
+                            onClick={() => setShuffle(!isShuffle)}
+                            alt="shuffle">
+                                <use xlinkHref={props.iconShuffle} stroke={isShuffle ? 'purple' : ''}></use>
                             </Styled.playerBtnShuffleSvg>
                         </Styled.playerBtnShuffle>
                     </Styled.playerControls>
