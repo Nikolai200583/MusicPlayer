@@ -8,26 +8,51 @@ import { BarContent } from '../../components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
 import { SELECTIONS } from '../../Constants/selection';
+import { useGetAllMusicQuery} from '../../redux/musicApi';
 import { useSelector } from "react-redux";
 
 
-export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => {
+export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
   
     const [menuActive, setMenuActive] = useState(false);
-    const [isLoading, setLoading] = useState(true);  
+    const [isLoad, setLoading] = useState(true); 
+   
+    const {data, isLoading} = useGetAllMusicQuery();
+    const filterAuthor = useSelector(state => state.setFilters.author);
+    const filterGenre = useSelector(state => state.setFilters.genre);
+    const filterYears = useSelector(state => state.setFilters.years)
+    
+    let TRACKS = data;
+    
+   
+    switch (filterYears) {
+    case 'Сначала новые': TRACKS = TRACKS.filter((element) => element).sort(({release_date: adate}, {release_date: bdate}) => (new Date(adate).valueOf()) - (new Date(bdate).valueOf()));   
+        break;
+        case 'Сначала старые':TRACKS = TRACKS.filter((element) => element).sort(({release_date: adate}, {release_date: bdate}) => (new Date(bdate).valueOf()) - (new Date(adate).valueOf()))            
+        break;
+    default:
+        break;
+}
 
-    const filterAuthor = useSelector(state => state.setFilters.author)
+    if ( filterAuthor.length > 0) {
 
-    let result = TRACKS.filter( element => filterAuthor.every( i => element.name.includes(i) ) );
+        TRACKS = TRACKS.filter(({ author }) => filterAuthor.includes(author))
+    } 
+    if (filterGenre.length > 0) {
 
-    console.log(result)
+        TRACKS = TRACKS.filter(({ genre }) => filterGenre.includes(genre))
+    }
+    
+
    
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 2000);
         return () => clearTimeout(timer);
     });
+
+    if (isLoading) return <h1>Loading</h1>
 
     return (     
         <Styled.container>
@@ -75,7 +100,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => 
                                 <PlayListItem
                                     key={track.id}
                                     track={track}
-                                    loading={isLoading}
+                                    loading={isLoad}
                                     titleTrack={track.name}
                                     titleSpan={track.titleSpan}
                                     author={track.author}
@@ -96,14 +121,14 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme, TRACKS}) => 
                     </Styled.sidebarPersonal>
                     <Styled.sidebarBlock>
                         <Styled.sidebarList>
-                            <SideBar loading={isLoading} users={SELECTIONS} />
+                            <SideBar loading={isLoad} users={SELECTIONS} />
                         </Styled.sidebarList>
                     </Styled.sidebarBlock>
                 </Styled.mainSidebar>
             </Styled.main>
             <Styled.bar>
                 <BarContent
-                  loading={isLoading} 
+                  loading={isLoad} 
                   iconPrev="img/icon/sprite.svg#icon-prev"
                   iconPlay="img/icon/sprite.svg#icon-play"
                   iconPause="img/icon/sprite.svg#icon-pause"

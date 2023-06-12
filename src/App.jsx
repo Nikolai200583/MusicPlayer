@@ -12,9 +12,8 @@ export function App() {
     const [theme, setTheme] = useState('dark');
     const isDarkTheme = theme === 'dark';
     const [isToggled, setIsToggled] = useState(isDarkTheme);  
-    const {data, isLoading} = useGetAllMusicQuery();    
-    const TRACKS = data
- 
+    const {isLoading} = useGetAllMusicQuery();   
+  
     const toggleTheme = () => {
         setTheme(isDarkTheme ? 'light' : 'dark');
     };
@@ -40,10 +39,10 @@ export function App() {
         spanBurger: '#000000',
         stroke: '#696969',
         backDrop: '#ffffff',
-    };
-  
+    };  
     
     if (isLoading) return <h1>Loading</h1>
+    
     return (
         
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -58,8 +57,7 @@ export function App() {
                         onToggle={onToggle}
                         darkTheme={darkTheme}
                         lightTheme={lightTheme}
-                        isDarkTheme={isDarkTheme}
-                        TRACKS={TRACKS}                       
+                        isDarkTheme={isDarkTheme}                                           
                     />
                 </Styled.wrapper>
             </SkeletonTheme>

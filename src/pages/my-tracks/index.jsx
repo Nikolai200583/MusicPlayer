@@ -5,14 +5,12 @@ import { NavBurger } from '../../components/NavBurger/NavBurger';
 import { NavMenu } from '../../components/NavMenu/NavMenu';
 import { BarContent } from '../../components/BarContent/BarContent';
 import { useState, useEffect } from 'react';
-import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
 import { useGetAllMusicQuery} from '../../redux/musicApi';
 
 
 export const MyTrack = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
     
-    const {data} = useGetAllMusicQuery();
-      
+    const {data} = useGetAllMusicQuery();      
 
     const [menuActive, setMenuActive] = useState(false);
     const [isLoading, setLoading] = useState(true);  
@@ -56,8 +54,7 @@ export const MyTrack = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                             name="search"
                         />
                     </Styled.centerblockSearch>
-                    <Styled.centerblockH2>Мой Плейлист</Styled.centerblockH2>
-                    <CenterblockFilter traks={TRACKS} />
+                    <Styled.centerblockH2>Мой Плейлист</Styled.centerblockH2>                    
                     <Styled.centerblockContent>
                         <Styled.contentTitle>
                             <Styled.col01>Трек</Styled.col01>
