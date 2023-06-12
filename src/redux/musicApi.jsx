@@ -50,6 +50,14 @@ export const musicApi = createApi({
         body,
       })      
     }),
+
+    postTokenRefresh: builder.mutation({
+      query: (body) => ({
+        url: 'user/token/refresh/',
+        method: 'POST',
+        body,
+      })      
+    }),
     postLike: builder.mutation({
       query: (id) => ({
         url: `/catalog/track/${id}/favorite/`,
@@ -74,4 +82,5 @@ export const { useGetAllMusicQuery,
   usePostLoginMutation,
   usePostTokenMutation,
   usePostLikeMutation,
+  usePostTokenRefreshMutation,
   usePostUnlikeMutation } = musicApi;

@@ -2,18 +2,42 @@ import { AppRoutes } from './routes';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { GlobalStyle } from './components/App/GlobalStyle';
 import * as Styled from './components/App/Styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useGetAllMusicQuery} from './redux/musicApi';
-
+import { useGetAllMusicQuery, usePostTokenRefreshMutation} from './redux/musicApi';
+import { useDispatch } from 'react-redux';
+import { userLogin } from './redux/slices/userSlice';
 
 
 export function App() {
     const [theme, setTheme] = useState('dark');
     const isDarkTheme = theme === 'dark';
     const [isToggled, setIsToggled] = useState(isDarkTheme);  
-    const {isLoading} = useGetAllMusicQuery();   
+    const {isLoading} = useGetAllMusicQuery();
+    const dispatch = useDispatch()
+
+    const [postTokenRefresh, {}] = usePostTokenRefreshMutation();
+
+    const handleTokenRefresh = () => {
+        if (localStorage.getItem('token')) {
+            postTokenRefresh({ refresh: localStorage.getItem('token')})
+            .unwrap()
+            .then((data) => {
+              console.log(data)
+              dispatch(userLogin({
+                
+                token: data
+            }));
+            })           
+        }
+      }
   
+useEffect(() => {
+    setInterval(() => {
+        handleTokenRefresh ()
+    }, 300000)
+  }, [])
+
     const toggleTheme = () => {
         setTheme(isDarkTheme ? 'light' : 'dark');
     };
