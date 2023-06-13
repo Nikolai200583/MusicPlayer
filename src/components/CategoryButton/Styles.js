@@ -16,5 +16,7 @@ export const filterButton = styled.button`
         border-color: #ad61ff;
         color: #ad61ff;
         cursor: pointer;
-    }
+    }    
+   
+   
 `;

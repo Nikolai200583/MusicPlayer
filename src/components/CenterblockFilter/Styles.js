@@ -23,3 +23,25 @@ export const filterButtonBox = styled.div`
     gap: 10px;
   
 `;
+export const filterBox = styled.div`
+    position: relative;
+
+`;
+export const filterItems = styled.div`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 27px;
+    right:5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: purple;
+    cursor: pointer;
+
+    &.hidden {
+       display: none
+    }
+    
+`

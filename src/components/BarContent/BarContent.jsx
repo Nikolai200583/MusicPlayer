@@ -11,9 +11,8 @@ export const BarContent = (props) => {
     const dispatch = useDispatch()  
     
     const [isShuffle, setShuffle] = useState(false)
-    const [isRepeat, setRepeat] = useState(false)
-    const [currentSong, setCurrentSong] = useState();
-    const ref = useRef(null);
+    const [isRepeat, setRepeat] = useState(false)    
+    const [currentSong, setCurrentSong] = useState();   
     const clickRef = useRef();
     const {id, name, author} = useTrack();
     
@@ -30,7 +29,7 @@ export const BarContent = (props) => {
     const [audio, state, controls,] = useAudio({
         
         src: playingTrack.track_file,
-        autoPlay: false,
+        autoPlay: true,
         onEnded: () => {
           if (!isRepeat) {
             handleNext()
@@ -76,14 +75,23 @@ export const BarContent = (props) => {
             length: duration,
         });        
     },[state])
-    
+   
+        const handleValueChange = (event) => {
+          controls.volume(Number(event.target.value) / 10)
+        }
+        
+    useEffect(() => {
+        controls.volume(0.5)
+      }, [])
 
 
     const checkWidth = (e) => {
+        if(clickRef.current){
         let width = clickRef.current.clientWidth;
         const offset = e.nativeEvent.offsetX;
         const divprogress = (offset / width) * 100;
-        ref.current.currentTime = (divprogress / 100) * currentSong.length;
+        controls.seek(state.duration * (divprogress / 100)) ;
+        }
     };   
     return (
         <Styled.barContent>
@@ -92,9 +100,7 @@ export const BarContent = (props) => {
                 <Styled.navigationWrapper onClick={checkWidth} ref={clickRef}>
                     <Styled.seekBar
                         style={{
-                            width: currentSong
-                                ? `${currentSong.progress + '%'}`
-                                : '',
+                            width: currentSong ? `${currentSong.progress + '%'}` : '',
                         }}
                     ></Styled.seekBar>
                 </Styled.navigationWrapper>
@@ -188,14 +194,18 @@ export const BarContent = (props) => {
                 <Styled.barVolumeBlock>
                     <Styled.barVolumeContent>
                         <Styled.barVolumeImage>
-                            <Styled.barVolumeSvg alt="volume">
-                                <use xlinkHref={props.iconVolume}></use>
+                            <Styled.barVolumeSvg
+                             onClick={state.muted ? controls.unmute: controls.mute} alt="volume">
+                             <use xlinkHref={props.iconVolume} stroke={state.muted ? 'red' : ''}></use>
                             </Styled.barVolumeSvg>
                         </Styled.barVolumeImage>
                         <Styled.barVolumeProgress>
                             <Styled.barVolumeProgressLine
                                 type="range"
-                                name="range"
+                                name="range" 
+                                min="0" 
+                                max="10"
+                                defaultValue={state.volume * 10} onChange={handleValueChange}                              
                             />
                         </Styled.barVolumeProgress>
                     </Styled.barVolumeContent>

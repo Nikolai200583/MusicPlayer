@@ -239,27 +239,71 @@ export const barVolumeBlock = styled.div`
     padding: 0 92px 0 0;
 `;
 export const barVolumeContent = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+    -ms-flex-direction: row;
+        flex-direction: row;
+-webkit-box-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+-webkit-box-pack: flex-end;
+    -ms-flex-pack: flex-end;
+        justify-content: flex-end;
+}
 `;
 export const barVolumeImage = styled.div`
     width: 13px;
     height: 18px;
     margin-right: 17px;
+    cursor: pointer;
 `;
 export const barVolumeSvg = styled.svg`
     width: 13px;
     height: 18px;
     fill: transparent;
-    stroke: ${(props) => props.theme.stroke};
+    stroke: ${(props) => props.theme.stroke}
+    
 `;
 export const barVolumeProgress = styled.div`
     width: 109px;
+    height: 23px;
     color: black;
 `;
 export const barVolumeProgressLine = styled.input`
     width: 109px;
+    -webkit-appearance: none;
     cursor: pointer;
+
+    :focus {
+        outline: none;
+      }  
+
+    ::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 1em;
+        background: #FFFFFF;
+        border: 2px solid #FFF;
+        box-shadow: 0 0 2px black;
+        margin-top: calc(2px * 0.5 - max(12px * 0.5,2px));
+        :active {
+            background: #6F6F6F;
+          }
+    }
+    ::-webkit-slider-runnable-track {
+        height: 2px;
+        border: none;
+        border-radius: 0.5em;
+        background: #efefef;
+        box-shadow: none;   
+
+        :hover {
+            background: #919293;
+          }   
+      }
+      
 `;

@@ -7,6 +7,7 @@ export const filterDropdown = styled.ul`
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
+    overflow-y: auto;
 `;
 
 export const dropdownItem = styled.li`
