@@ -13,6 +13,9 @@ export const filterDropdown = styled.ul`
 export const dropdownItem = styled.li`
     padding: 10px;
     cursor: pointer;
+    &.colors {
+        color: purple
+    };
     :hover {
         color: #ad61ff;
         cursor: pointer;

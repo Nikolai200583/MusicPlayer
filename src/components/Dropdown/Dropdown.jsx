@@ -1,12 +1,14 @@
 import * as Styled from './Styles';
 import { setFilterYears, setFilterAuthor, setFilterGenre} from '../../redux/slices/setFilters';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Dropdown = ({ data, category }) => { 
-    const dispatch = useDispatch()
-    
+export const Dropdown = ({ data, category }) => {     const dispatch = useDispatch()
+    const filterAuthor = useSelector(state => state.setFilters.author);
+    const filterGenre = useSelector(state => state.setFilters.genre);
+    const filterYears = useSelector(state => state.setFilters.years)
 
     const handleFilterClick = (item) => {
+        
        switch (category) {
         case 'Год выпуска': dispatch(setFilterYears({
             years: item,            
@@ -24,10 +26,15 @@ export const Dropdown = ({ data, category }) => {
             break;
        }
     }
+    
     return (
         <Styled.filterDropdown>
             {data.map((item, i) => (
-                <Styled.dropdownItem key={i} onClick={() => handleFilterClick(item)}> {item} </Styled.dropdownItem>
+                <Styled.dropdownItem 
+                key={i}
+                className={filterAuthor.includes(item) || filterGenre.includes(item) || filterYears.includes(item) ? 'colors' : ''} 
+                onClick={() => handleFilterClick(item)}> {item}             
+                 </Styled.dropdownItem>
             ))}
         </Styled.filterDropdown>
     );
