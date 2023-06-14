@@ -11,12 +11,14 @@ import { SELECTIONS } from '../../Constants/selection';
 import { useGetAllMusicQuery} from '../../redux/musicApi';
 import { useSelector, useDispatch } from "react-redux";
 import { setFilterInp} from '../../redux/slices/setFilters';
+import {useTrack} from "../../hooks/use-track"
 
 export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
   
     const [menuActive, setMenuActive] = useState(false);
     const [isLoad, setLoading] = useState(true); 
     const dispatch = useDispatch()
+    const {id} = useTrack();
     
    
     const {data, isLoading} = useGetAllMusicQuery();
@@ -49,8 +51,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
 
         TRACKS = TRACKS.filter(({ name }) => name.toLowerCase().includes(filterSerchInp.toLowerCase()))
     }
-    
-
+   
     
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -109,15 +110,9 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                             </Styled.col04>
                         </Styled.contentTitle>
                         <Styled.contentPlaylist>
-                            
-                            {TRACKS.map((track) => (
-                                <PlayListItem
-                                    key={track.id}
-                                    track={track}
-                                    loading={isLoad}
-                                    titleTrack={track.name}
-                                    titleSpan={track.titleSpan}
-                                    author={track.author}
+                            {TRACKS.length === 0 ? '' : 
+                            TRACKS.map((track) => (
+                                <PlayListItem key={track.id} track={track} loading={isLoad} titleTrack={track.name} titleSpan={track.titleSpan} author={track.author}
                                     album={track.album}
                                     time={track.duration_in_seconds}                                    
                                 />
@@ -141,6 +136,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                 </Styled.mainSidebar>
             </Styled.main>
             <Styled.bar>
+                {id ? 
                 <BarContent
                   loading={isLoad} 
                   iconPrev="img/icon/sprite.svg#icon-prev"
@@ -154,7 +150,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                   iconDislike="img/icon/sprite.svg#icon-dislike"
                   iconVolume="img/icon/sprite.svg#icon-volume"
                   tracks = {TRACKS}                 
-                  />
+                  /> : ''}
             </Styled.bar>
             <Styled.footer></Styled.footer>
         </Styled.container>       

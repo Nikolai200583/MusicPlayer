@@ -8,22 +8,21 @@ import * as Styled from './Styles';
 import {useTrack} from "../../hooks/use-track"
 
 export const BarContent = (props) => {
-    const dispatch = useDispatch()  
-    
+    const dispatch = useDispatch()   
     const [isShuffle, setShuffle] = useState(false)
     const [isRepeat, setRepeat] = useState(false)    
     const [currentSong, setCurrentSong] = useState();   
     const clickRef = useRef();
     const {id, name, author} = useTrack();
     
-    const tracks = props.tracks 
+    const tracks = props.tracks      
 
     let index = tracks.findIndex((track) => track.id === id);    
     if (index < 0) {
         index = 0
     }
    
-    const playingTrack = tracks[index];    
+    const playingTrack = tracks[index];  
  
 
     const [audio, state, controls,] = useAudio({
