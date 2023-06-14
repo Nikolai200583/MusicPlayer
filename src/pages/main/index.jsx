@@ -9,18 +9,21 @@ import { useState, useEffect } from 'react';
 import { CenterblockFilter } from '../../components/CenterblockFilter/CenterblockFilter';
 import { SELECTIONS } from '../../Constants/selection';
 import { useGetAllMusicQuery} from '../../redux/musicApi';
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setFilterInp} from '../../redux/slices/setFilters';
 
 export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
   
     const [menuActive, setMenuActive] = useState(false);
     const [isLoad, setLoading] = useState(true); 
+    const dispatch = useDispatch()
+    
    
     const {data, isLoading} = useGetAllMusicQuery();
     const filterAuthor = useSelector(state => state.setFilters.author);
     const filterGenre = useSelector(state => state.setFilters.genre);
     const filterYears = useSelector(state => state.setFilters.years)
+    const filterSerchInp = useSelector(state => state.setFilters.serchInp)    
     
     let TRACKS = data;
     
@@ -42,9 +45,13 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
 
         TRACKS = TRACKS.filter(({ genre }) => filterGenre.includes(genre))
     }
+    if (filterSerchInp.length > 0) {
+
+        TRACKS = TRACKS.filter(({ name }) => name.toLowerCase().includes(filterSerchInp.toLowerCase()))
+    }
     
 
-   
+    
     useEffect(() => {
         const timer = setTimeout(() => {
             setLoading(false);
@@ -77,6 +84,12 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                             <use xlinkHref={isDarkTheme ? "img/icon/sprite.svg#icon-search" : "img/icon/sprite.svg#icon-searchBlack"}></use>
                         </Styled.searchSvg>
                         <Styled.searchText
+                        onInput={(event) => {
+                            const target = event.target.value
+                            dispatch(setFilterInp({
+                                serchInp: target,            
+                            }));            
+                        }}
                             type="search"
                             placeholder="Поиск"
                             name="search"
@@ -96,6 +109,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                             </Styled.col04>
                         </Styled.contentTitle>
                         <Styled.contentPlaylist>
+                            
                             {TRACKS.map((track) => (
                                 <PlayListItem
                                     key={track.id}

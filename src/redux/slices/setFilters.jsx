@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {   
     years: [],
     author: [],
-    genre: []
+    genre: [],
+    serchInp: '',
   };
 
 const setFilters = createSlice({
@@ -42,8 +43,12 @@ const setFilters = createSlice({
    removeFilterGenre: (state) => {
           state.genre = [];     
       },
+    setFilterInp: (state, action) => ({
+      ...state,
+      serchInp: action.payload.serchInp       
+    }),
   },
 });
 
-export const {setFilterYears, setFilterAuthor, setFilterGenre, removeFilterYears, removeFilterAuthor, removeFilterGenre} = setFilters.actions;
+export const {setFilterYears, setFilterAuthor, setFilterGenre, removeFilterYears, removeFilterAuthor, removeFilterGenre, setFilterInp} = setFilters.actions;
 export default setFilters.reducer;
