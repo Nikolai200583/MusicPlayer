@@ -1,7 +1,7 @@
 import React from "react";
 
 import { setupApiStore } from "./test.utils";
-import { ItemsAutor } from "../../components/PlayListItems/ItemsAuthor";
+import { ItemsAuthor } from "../../components/PlayListItems/ItemsAuthor";
 import { render, screen } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -35,7 +35,7 @@ describe("Playlist feature", () => {
   afterAll(() => server.close());
 
   it("should show requested data", async () => {
-    render(<ItemsAutor />, { wrapper: storeRef.wrapper });
+    render(<ItemsAuthor />, { wrapper: storeRef.wrapper });
 
     // Проверяем начальное состояние компонента
     screen.getByText("Loading...");
@@ -43,6 +43,7 @@ describe("Playlist feature", () => {
     // Ждем ответа от сервера. Как только он придет,
     // отрисуется пункт списка
     expect(await screen.findByText(/Alexander Nakarada/i)).toBeInTheDocument();
+
     expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
   });
 });

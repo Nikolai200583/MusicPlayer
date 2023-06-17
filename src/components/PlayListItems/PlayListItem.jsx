@@ -14,6 +14,7 @@ export const PlayListItem = ({
     album,
     time,
     loading,
+    isLoading,
 }) => {
     const { id: trackID, stared_user} = track;
 
@@ -40,6 +41,7 @@ export const PlayListItem = ({
         }),       
         );        
       }
+         
     return (
         <Styled.playlistItem onClick={() => handleOnRowClick()}>
             <Styled.playlistTrack>
@@ -68,7 +70,7 @@ export const PlayListItem = ({
                     </Styled.trackTitleText>
                 </Styled.trackTitle>
 
-                <ItemsAuthor loading={loading} author={author}/>
+                <ItemsAuthor isLoading={isLoading} loading={loading} author={author}/>
                    
 
                 <Styled.trackAlbum>

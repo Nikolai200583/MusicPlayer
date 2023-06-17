@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+
 import { render, cleanup } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
-
-const AllProviders = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState(themes.light);
-  
-};
 
 
 export function withStoreProvider(store) {
