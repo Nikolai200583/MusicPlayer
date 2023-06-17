@@ -5,6 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { usePostLikeMutation, usePostUnlikeMutation } from '../../redux/musicApi'
 import { setCurrentTrack} from '../../redux/slices/setTracks';
 import { useDispatch } from 'react-redux';
+import { ItemsAuthor } from './ItemsAuthor';
 export const PlayListItem = ({
     track,
     titleTrack,
@@ -67,15 +68,8 @@ export const PlayListItem = ({
                     </Styled.trackTitleText>
                 </Styled.trackTitle>
 
-                <Styled.trackAuthor>
-                    {loading ? (
-                        <Skeleton width={270} />
-                    ) : (
-                        <Styled.trackAuthorLink href="http://">
-                            {author}
-                        </Styled.trackAuthorLink>
-                    )}
-                </Styled.trackAuthor>
+                <ItemsAuthor loading={loading} author={author}/>
+                   
 
                 <Styled.trackAlbum>
                     {loading ? (

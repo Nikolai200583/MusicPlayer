@@ -1,7 +1,7 @@
 import React from "react";
 
 import { setupApiStore } from "./test.utils";
-import { PlayListItem } from "../../components/PlayListItems/PlayListItem";
+import { ItemsAutor } from "../../components/PlayListItems/ItemsAuthor";
 import { render, screen } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -9,9 +9,10 @@ import { musicApi } from "../musicApi";
 
 // Описываем endpoint-ы, которые хотим замокировать
 export const handlers = [
-  rest.get('https://painassasin.online/catalog/track/all', (req, res, ctx) => {
+  rest.get('https://painassasin.online/catalog/track/all', (res, ctx) => {
     return res(
-      ctx.json([{ id: "8", author: "Alexander Nakarada" }])
+      ctx.json([{ author: "Alexander Nakarada" }])
+      
     );
   }),
 ];
@@ -34,7 +35,7 @@ describe("Playlist feature", () => {
   afterAll(() => server.close());
 
   it("should show requested data", async () => {
-    render(<PlayListItem />, { wrapper: storeRef.wrapper });
+    render(<ItemsAutor />, { wrapper: storeRef.wrapper });
 
     // Проверяем начальное состояние компонента
     screen.getByText("Loading...");
