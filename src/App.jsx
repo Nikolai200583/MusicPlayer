@@ -4,7 +4,7 @@ import { GlobalStyle } from './components/App/GlobalStyle';
 import * as Styled from './components/App/Styles';
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useGetAllMusicQuery, usePostTokenRefreshMutation} from './redux/musicApi';
+import { usePostTokenRefreshMutation} from './redux/musicApi';
 import { useDispatch } from 'react-redux';
 import { userLogin } from './redux/slices/userSlice';
 
@@ -13,7 +13,7 @@ export function App() {
     const [theme, setTheme] = useState('dark');
     const isDarkTheme = theme === 'dark';
     const [isToggled, setIsToggled] = useState(isDarkTheme);  
-    const {isLoading} = useGetAllMusicQuery();
+    
     const dispatch = useDispatch()
 
     const [postTokenRefresh, {}] = usePostTokenRefreshMutation();
@@ -63,9 +63,7 @@ useEffect(() => {
         spanBurger: '#000000',
         stroke: '#696969',
         backDrop: '#ffffff',
-    };  
-    
-    if (isLoading) return <h1>Loading</h1>
+    };
     
     return (
         

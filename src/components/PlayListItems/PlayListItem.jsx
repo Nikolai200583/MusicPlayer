@@ -2,7 +2,7 @@ import * as Styled from './Styles';
 import React, {useState, useEffect} from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { usePostLikeMutation, usePostUnlikeMutation } from '../../redux/musicApi'
+import { usePostLikeMutation, usePostUnlikeMutation} from '../../redux/musicApi'
 import { setCurrentTrack} from '../../redux/slices/setTracks';
 import { useDispatch } from 'react-redux';
 import { ItemsAuthor } from './ItemsAuthor';
@@ -13,11 +13,9 @@ export const PlayListItem = ({
     author,
     album,
     time,
-    loading,
-    isLoading,
+    loading,    
 }) => {
     const { id: trackID, stared_user} = track;
-
     const [postLike] = usePostLikeMutation();
     const [postUnlike] = usePostUnlikeMutation();
     const dispatch = useDispatch()
@@ -70,7 +68,7 @@ export const PlayListItem = ({
                     </Styled.trackTitleText>
                 </Styled.trackTitle>
 
-                <ItemsAuthor isLoading={isLoading} loading={loading} author={author}/>
+                <ItemsAuthor loading={loading} author={author}/>
                    
 
                 <Styled.trackAlbum>

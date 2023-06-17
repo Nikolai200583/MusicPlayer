@@ -58,7 +58,9 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
             setLoading(false);
         }, 2000);
         return () => clearTimeout(timer);
-    }); 
+    });
+
+    if (isLoading) return <h1>Loading</h1>
 
     return (     
         <Styled.container>
@@ -110,7 +112,7 @@ export const Main = ({onToggle, lightTheme, darkTheme, isDarkTheme}) => {
                         <Styled.contentPlaylist>
                             {TRACKS.length === 0 ? '' : 
                             TRACKS.map((track) => (
-                                <PlayListItem isLoading={isLoading} key={track.id} track={track} loading={isLoad} titleTrack={track.name} titleSpan={track.titleSpan} author={track.author}
+                                <PlayListItem key={track.id} track={track} loading={isLoad} titleTrack={track.name} titleSpan={track.titleSpan} author={track.author}
                                     album={track.album}
                                     time={track.duration_in_seconds}                                    
                                 />
